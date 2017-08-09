@@ -35,9 +35,13 @@ gem 'jbuilder', '~> 2.5'
 
 group :test do
 
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.6'
 
-  gem 'capybara'
+  gem 'capybara', '~> 2.15', '>= 2.15.1'
+
+  gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
+
+  gem 'selenium-webdriver', '~> 3.4', '>= 3.4.4'
 
 end
 
