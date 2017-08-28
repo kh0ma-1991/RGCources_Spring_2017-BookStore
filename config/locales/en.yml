@@ -33,3 +33,8 @@ en:
   buy_now_button: "Buy now"
   previous_button: "Previous"
   next_button: "Next"
+  welcome_message: "Welcome to our amazing Bookstore!"
+  shop_description: "We pore through hundreds of new books each
+                     month and select the five best we can find
+                     to share with our members."
+  get_started_button: "Get Started"

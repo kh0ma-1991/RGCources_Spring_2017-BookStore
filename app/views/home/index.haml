@@ -1,5 +1,5 @@
 - if @books.length > 0
-  - @first_3_books = @books.first(3)
+  - @first_3_books = @books.last(3)
   %main.container
     #slider.carousel.slide{'data-ride': 'carousel'}
       %ol.carousel-indicators
@@ -30,74 +30,12 @@
         %span.sr-only= t('next_button')
 .container
   .jumbotron.text-center.mb-0
-    %h2.h1 Welcome to our amazing Bookstore!
+    %h2.h1= t('welcome_message')
     .mb-res-50
-      %p We pore through hundreds of new books each month and select the five best we can find to share with our members.
-    %button.btn.btn-default Get Started
+      %p= t('shop_description')
+    %button.btn.btn-default= t('get_started_button')
   .mb-35
     %h3 Best Sellers
     .row
-      .col-sm-6.col-md-3
-        .general-thumb-wrap
-          .thumbnail.general-thumbnail
-            %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-            .thumb-hover
-              .general-thumb-link-wrap
-                %a.thumb-hover-link{href: "#"}
-                  %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-                %a.thumb-hover-link{href: "#"}
-                  %i.fa.fa-shopping-cart.thumb-icon
-        .mb-35
-          .clearfix
-            %p.pull-right.font-16.in-gold-500 €28.50
-            %p.title.mr-55 Android Programming for Beginners
-          %span.divider-sm
-          %p.lead.small John Horton
-      .col-sm-6.col-md-3
-        .general-thumb-wrap
-          .thumbnail.general-thumbnail.disabled
-            %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-            .thumb-hover
-              .general-thumb-link-wrap
-                %a.thumb-hover-link{href: "#"}
-                  %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-                %a.thumb-hover-link{href: "#"}
-                  %i.fa.fa-shopping-cart.thumb-icon
-        .mb-35
-          .clearfix
-            %p.pull-right.font-16.in-gold-500 €28.50
-            %p.title.mr-55 Android Programming for Beginners
-          %span.divider-sm
-          %p.lead.small John Horton
-      .col-sm-6.col-md-3
-        .general-thumb-wrap
-          .thumbnail.general-thumbnail
-            %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-            .thumb-hover
-              .general-thumb-link-wrap
-                %a.thumb-hover-link{href: "#"}
-                  %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-                %a.thumb-hover-link{href: "#"}
-                  %i.fa.fa-shopping-cart.thumb-icon
-        .mb-35
-          .clearfix
-            %p.pull-right.font-16.in-gold-500 €28.50
-            %p.title.mr-55 Android Programming for Beginners
-          %span.divider-sm
-          %p.lead.small John Horton
-      .col-sm-6.col-md-3
-        .general-thumb-wrap
-          .thumbnail.general-thumbnail
-            %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-            .thumb-hover
-              .general-thumb-link-wrap
-                %a.thumb-hover-link{href: "#"}
-                  %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-                %a.thumb-hover-link{href: "#"}
-                  %i.fa.fa-shopping-cart.thumb-icon
-        .mb-35
-          .clearfix
-            %p.pull-right.font-16.in-gold-500 €28.50
-            %p.title.mr-55 Android Programming for Beginners
-          %span.divider-sm
-          %p.lead.small John Horton
+      - @books.first(4).each do |book|
+        =render 'shared/book', book: book
