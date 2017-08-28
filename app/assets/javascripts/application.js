@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require jquery
 //= require bootstrap
+//= require shared/bookCoverGenerator
 //= require_tree .
