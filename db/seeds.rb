@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'ffaker'
+
+rand(3..10).times do |n|
+  Author.create(name: [FFaker::Name.first_name, FFaker::Name.last_name].join(' '))
+end
+
+rand(25..40).times do |n|
+  book = Book.create(title: FFaker::Book.title, price: rand(1..99),
+                     description: FFaker::HealthcareIpsum.paragraph)
+
+  authors = Author.all
+  rand(1..3).times do |n|
+    author = authors[rand(0..(authors.length-1))]
+    book.authors << author
+  end
+end
