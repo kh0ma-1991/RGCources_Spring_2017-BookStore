@@ -7,6 +7,7 @@ end
 
 ruby '2.4.1'
 # gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'ffaker', '~> 2.2'
 gem 'haml', '~> 5.0', '>= 5.0.2'
 gem 'haml-rails', '~> 1.0'
 # gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
