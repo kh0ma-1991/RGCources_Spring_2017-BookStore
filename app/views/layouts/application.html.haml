@@ -3,6 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title BookStore
+    %link{href: "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600", rel: "stylesheet"}
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
@@ -10,6 +11,6 @@
     -#= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js'
   %body
     = render "layouts/header"
-    %main.container
-      = yield
+    = yield
     = render "layouts/footer"
+  %script{src: "https://use.fontawesome.com/67602d7308.js"}
