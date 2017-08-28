@@ -30,4 +30,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  buy_now_button: "Buy now"
+  previous_button: "Previous"
+  next_button: "Next"
