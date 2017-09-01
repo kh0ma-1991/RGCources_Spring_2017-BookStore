@@ -38,4 +38,4 @@
     %h3 Best Sellers
     .row
       - @books.first(4).each do |book|
-        =render 'shared/book', book: book
+        =render 'shared/book_item', book: book

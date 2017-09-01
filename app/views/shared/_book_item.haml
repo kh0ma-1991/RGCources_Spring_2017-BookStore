@@ -7,7 +7,7 @@
         =render 'shared/book_cover_generator', book: book, width: 125, height: 200
       .thumb-hover
         .general-thumb-link-wrap
-          %a.thumb-hover-link{href: "#"}
+          = link_to book, class: "thumb-hover-link" do
             %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
           %a.thumb-hover-link{href: "#"}
             %i.fa.fa-shopping-cart.thumb-icon
