@@ -16,4 +16,4 @@
       %p.pull-right.font-16.in-gold-500= number_to_currency(book.price, unit: '€')
       %p.title.mr-55= book.title
     %span.divider-sm
-    %p.lead.small= book.authors.map { | author | author.name }.join(', ')
+    %p.lead.small= book.authors_decorated

@@ -19,7 +19,7 @@
                 .mb-60
                   %h1= book.title
                   %p.lead= truncate(book.description, length: 400)
-                  %p.lead.small= book.authors.map { | author | author.name }.join(', ')
+                  %p.lead.small= book.authors_decorated
                   .general-align
                     %button.disabled.btn= t('buy_now_button')
       %a.left.carousel-control{href: '#slider', role: 'button', 'data-slide': 'prev'}

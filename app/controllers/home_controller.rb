@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
   def index
-    @books = Book.all
+    @books = Book.all.decorate
   end
 end
