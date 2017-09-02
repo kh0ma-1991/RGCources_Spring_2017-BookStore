@@ -1,7 +1,7 @@
 %main.container
   = link_to root_path, class: "general-back-link" do
     %i.fa.fa-long-arrow-left.mr-15
-    Back to results
+    = t('back_to_results')
   .row
     .col-sm-6
       .product-gallery
@@ -19,33 +19,43 @@
       %p.lead.small= @book.authors_decorated
       .row
         .col-xs-12.col-md-4
-          %p.h1.in-gold-500.mt-10 €32.90
+          %p.h1.in-gold-500.mt-10= price_in_currency(@book.price)
         .col-xs-5.col-md-3
           .input-group.general-position
-            %a.input-link{href: "#"}
+            %a.input-link{href: "#", id: 'quantity_minus'}
               %i.fa.fa-minus.line-height-40
-            %input.form-control.quantity-input{type: "text"}
-            %a.input-link{href: "#"}
+            %input.form-control.quantity-input#quantity_to_buy{type: "text", value: 1, readonly: true}
+            %input#quantity{type: "hidden", value: "#{@book.quantity}", readonly: true}
+            %a.input-link{href: "#", id: 'quantity_plus'}
               %i.fa.fa-plus.line-height-40
         .col-xs-7.col-md-5
-          %button.btn.btn-default.pull-right.general-position Add to Cart
+          %button.btn.btn-default.pull-right.general-position= t("add_to_cart")
       .general-info-wrap.divider-lg
-        %p Description
-        %p.lead.small.line-height-2
-          Smashing Book 5: Real-Life Responsive Web Design is our brand new, upcoming book with smart front-end techniques and design patterns derived from real-life responsive projects. With 13 chapters on responsive workflow, SVG, Flexbox, Web fonts, responsive images, responsive email, content strategy, debugging ...
-          %a.in-gold-500.ml-10{href: "#"} Read More
-      .general-info-wrap.divider-lg
-        .clearfix
-          %p.pull-left Year of publication
-          %p.lead.small.pull-right 2016
-      .general-info-wrap.divider-lg
-        .clearfix
-          %p.pull-left Dimensions
-          %p.lead.small.pull-right H:6.4\" x W: 0.9\" x D: 5.0
+        %p= t("description")
+        #short_description
+          %p.lead.small.line-height-2
+            = truncate(@book.description, length: 480)
+            %a.in-gold-500.ml-10#show_description{href: "#"}= t("read_more")
+        #description.hidden
+          %p.lead.small.line-height-2
+            = @book.description
+            %a.in-gold-500.ml-10#hide_description{href: "#"}= t("hide")
       .general-info-wrap.divider-lg
         .clearfix
-          %p.pull-left Materials
-          %p.lead.small.pull-right Hardcove, glossy paper
+          %p.pull-left= t("year")
+          %p.lead.small.pull-right= @book.year
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t("dimensions")
+          %p.lead.small.pull-right= @book.dimensions_decorated
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t("materials")
+          %p.lead.small.pull-right= @book.materials
+      .general-info-wrap.divider-lg
+        .clearfix
+          %p.pull-left= t("quantity")
+          %p.lead.small.pull-right= @book.quantity
   .mb-80
     %h3.in-gold-500.mb-25 Reviews (3)
     .general-message-wrap.divider-lg
