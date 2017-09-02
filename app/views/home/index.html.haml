@@ -11,8 +11,8 @@
             .row
               .col-sm-5
                 .general-img-wrap
-                  -if(book.img)
-                    %img.img-shadow.general-thumbnail-img{src: book.img, alt: "design-book"}
+                  -if(book.cover)
+                    %img.img-shadow.general-thumbnail-img{src: book.cover, alt: "design-book"}
                   -else
                     =render 'shared/book_cover_generator', book: book, width: 250, height: 333
               .col-sm-7
