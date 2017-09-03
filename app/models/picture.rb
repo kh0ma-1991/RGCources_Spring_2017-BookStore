@@ -1,4 +1,6 @@
 class Picture < ApplicationRecord
+  mount_uploader :url, PictureUploader
+
   belongs_to :book
   validate :validate_pictures_count, on: [:create, :update]
 

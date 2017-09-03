@@ -7,6 +7,8 @@ end
 
 ruby '2.4.1'
 # gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'carrierwave', '~> 1.1.0'
+gem 'mini_magick', '~> 4.8'
 gem 'draper', '3.0.0'
 gem 'ffaker', '~> 2.2'
 gem 'haml', '~> 5.0', '>= 5.0.2'
