@@ -7,6 +7,7 @@ end
 
 ruby '2.4.1'
 # gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'devise', '~> 4.3'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'carrierwave', '~> 1.1.0'
 gem 'mini_magick', '~> 4.8'
