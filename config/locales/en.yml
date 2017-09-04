@@ -38,3 +38,12 @@ en:
                      month and select the five best we can find
                      to share with our members."
   get_started_button: "Get Started"
+  back_to_results: "Back to results"
+  add_to_cart: "Add to Cart"
+  description: "Description"
+  read_more: "Read More"
+  hide: "Hide"
+  year: "Year of publication"
+  dimensions: "Dimensions"
+  materials: "Materials"
+  quantity: "Quantity"
