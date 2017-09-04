@@ -7,6 +7,7 @@ end
 
 ruby '2.4.1'
 # gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'activeadmin', '~> 1.1'
 gem 'cancancan', '~> 2.0'
 gem 'devise', '~> 4.3'
 gem 'figaro', '~> 1.1', '>= 1.1.1'

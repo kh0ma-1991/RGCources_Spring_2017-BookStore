@@ -28,3 +28,5 @@ rand(25..40).times do |n|
     book.authors << author
   end
 end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -45,4 +45,4 @@ $.generateBookCover = (canvas,authors,title) ->
   fillTextToCanvas(canvas,'BookStore', 'bottom','#4E608F')
 
 $(document).ready( ->
-  $('canvas').trigger("onload"))
+  $('canvas').trigger("onplay"))
