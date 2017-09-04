@@ -1,7 +1,7 @@
 .col-sm-6.col-md-3
   .general-thumb-wrap
     .thumbnail.general-thumbnail
-      -if(book.cover)
+      -if(!book.cover.file.nil?)
         %img.img-shadow.general-thumbnail-img{src: book.cover, alt: "book cover"}
       -else
         =render 'shared/book_cover_generator', book: book, width: 125, height: 200

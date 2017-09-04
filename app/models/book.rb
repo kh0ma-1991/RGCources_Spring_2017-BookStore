@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+  mount_uploader :cover, CoverUploader
   has_many :pictures
   validate :validate_pictures_count, on: [:create, :update]
 
