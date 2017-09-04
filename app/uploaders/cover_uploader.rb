@@ -25,7 +25,12 @@ class CoverUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    "cover_#{model.id}" if original_filename
+    "cover_#{secure_token(10)}.#{file.extension}" if original_filename
   end
 
+  protected
+  def secure_token(length=16)
+    var = :"@#{mounted_as}_secure_token_#{Time.now.to_i}"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.hex(length/2))
+  end
 end

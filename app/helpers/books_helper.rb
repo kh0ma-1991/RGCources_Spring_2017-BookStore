@@ -1,7 +1,7 @@
 module BooksHelper
   def large_pictures
     return fake_images if @book.pictures.count == 0
-    @book.pictures
+    @book.pictures.map { | picture | picture.url }
   end
 
   private

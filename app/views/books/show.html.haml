@@ -8,12 +8,15 @@
         .mb-20
           = image_tag large_pictures[0], class: 'img-responsive'
         .images.clearfix
-          %a.img-link{href: "#"}
-            = image_tag large_pictures[1]
-          %a.img-link{href: "#"}
-            = image_tag large_pictures[2]
-          %a.img-link{href: "#"}
-            = image_tag large_pictures[3]
+          - if large_pictures[1]
+            %a.img-link{href: "#"}
+              = image_tag large_pictures[1]
+          - if large_pictures[2]
+            %a.img-link{href: "#"}
+              = image_tag large_pictures[2]
+          - if large_pictures[3]
+            %a.img-link{href: "#"}
+              = image_tag large_pictures[3]
     .col-sm-6
       %h1.mt-res-0= @book.title
       %p.lead.small= @book.authors_decorated

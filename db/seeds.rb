@@ -20,7 +20,7 @@ rand(25..40).times do |n|
                      year: rand(1999..2017),
                      materials: [cover_materials[rand 0..3], paper_materials[rand 0..1]].join(', '),
                      dimensions: {H: rand(0.1..6.0).round(1), W: rand(0.1..9.0).round(1), D: rand(0.1..3.0).round(1)},
-                     quantity: rand(0..49))
+                     quantity: rand(1..49))
 
   authors = Author.all
   rand(1..3).times do |n|
