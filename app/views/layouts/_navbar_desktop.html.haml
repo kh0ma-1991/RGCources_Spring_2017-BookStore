@@ -1,0 +1,23 @@
+.hidden-xs
+  %ul.nav.navbar-nav
+    %li
+      =link_to t('home'), root_path
+    %li.dropdown
+      %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
+      %ul.dropdown-menu
+        %li
+          %a{href: "#"} Mobile development
+        %li
+          %a{href: "#"} Photo
+        %li
+          %a{href: "#"} Web design
+    %li.dropdown
+      %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} My account
+      %ul.dropdown-menu
+        %li
+          %a{href: "#"} Orders
+        %li
+          %a{href: "#"} Settings
+        %li.divider{role: "separator"}
+        %li
+          %a{href: "#"} Log out
