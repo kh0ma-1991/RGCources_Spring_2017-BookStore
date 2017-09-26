@@ -5,12 +5,9 @@
     %li.dropdown
       %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} Shop
       %ul.dropdown-menu
-        %li
-          %a{href: "#"} Mobile development
-        %li
-          %a{href: "#"} Photo
-        %li
-          %a{href: "#"} Web design
+        - Category.all.each do | category |
+          %li
+            %a{href: "catalog?category=#{category.id}"}=category.name
     %li.dropdown
       %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} My account
       %ul.dropdown-menu
