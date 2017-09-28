@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+  paginates_per 8
   mount_uploader :cover, CoverUploader
   has_many :pictures
   belongs_to :category

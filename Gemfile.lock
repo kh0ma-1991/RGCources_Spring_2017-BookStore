@@ -384,6 +384,7 @@ DEPENDENCIES
   haml (~> 5.0, >= 5.0.2)
   haml-rails (~> 1.0)
   jbuilder (~> 2.5)
+  kaminari (= 1.0.1)
   listen (>= 3.0.5, < 3.2)
   mime-types
   mini_magick (~> 4.8)

@@ -1,0 +1,64 @@
+%main.container
+  %h1.general-title-margin= t('catalog')
+  .hidden-xs.clearfix
+    .dropdowns.pull-right
+      .dropdown.width-240
+        %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+          Newest first
+          %i.fa.fa-angle-down.dropdown-icon.pull-right
+        %ul.dropdown-menu
+          %li
+            %a{href: "#"} Newest first
+          %li
+            %a{href: "#"} Popular first
+          %li
+            %a{href: "#"} Price: Low to hight
+          %li
+            %a{href: "#"} Price: Low to hight
+    %ul.list-inline.pt-10.mb-25.mr-240
+      %li.mr-35
+        = link_to catalog_index_path, class: 'filter-link' do
+          = t('all')
+          %span.badge.general-badge= count_books nil
+      - Category.all.each do |category|
+        %li.mr-35
+          = link_to catalog_index_path(category: category.id), class: 'filter-link' do
+            = category.name
+            %span.badge.general-badge= count_books category.id
+  .dropdowns.mb-25.visible-xs
+    %p.lead.small.mb-10 Filter by category
+    .dropdown
+      %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+        Newest first
+        %i.fa.fa-angle-down.dropdown-icon.pull-right
+      %ul.dropdown-menu
+        %li
+          %a{href: "#"} Newest first
+        %li
+          %a{href: "#"} Popular first
+        %li
+          %a{href: "#"} Price: Low to hight
+        %li
+          %a{href: "#"} Price: Low to hight
+    %p.lead.small.mb-10 Sort by
+    .dropdown
+      %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+        Newest first
+        %i.fa.fa-angle-down.dropdown-icon.pull-right
+      %ul.dropdown-menu
+        %li
+          %a{href: "#"} Newest first
+        %li
+          %a{href: "#"} Popular first
+        %li
+          %a{href: "#"} Price: Low to hight
+        %li
+          %a{href: "#"} Price: Low to hight
+  .mb-120
+    - books_paged.in_groups_of(4, false).each do |group|
+      .row
+        - group.each do |book|
+          = render 'shared/book_item', book: book
+    - unless last_page?
+      .text-center
+        =link_to t('view_more'), catalog_index_path(category: params[:category], page: next_page, anchor: anchor), class: 'btn btn-primary'

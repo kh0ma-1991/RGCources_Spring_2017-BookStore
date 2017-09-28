@@ -20,7 +20,7 @@ categories.each do | name |
   Category.create(name: name)
 end
 
-rand(25..40).times do
+rand(100..150).times do
   book = Book.create(title: FFaker::Book.title, price: rand(1..99),
                      description: FFaker::HealthcareIpsum.paragraph(6),
                      year: rand(1999..2017),

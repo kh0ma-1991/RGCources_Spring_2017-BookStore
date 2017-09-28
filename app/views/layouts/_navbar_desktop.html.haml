@@ -7,7 +7,7 @@
       %ul.dropdown-menu
         - Category.all.each do | category |
           %li
-            %a{href: "catalog?category=#{category.id}"}=category.name
+            = link_to category.name, catalog_index_path(category: category.id)
     %li.dropdown
       %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} My account
       %ul.dropdown-menu
