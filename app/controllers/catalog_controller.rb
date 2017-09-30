@@ -5,6 +5,6 @@ class CatalogController < ApplicationController
   private
 
   def catalog_params
-    params.require(:catalog).permit(:category, :page)
+    params.require(:catalog).permit(:category, :page, :filter)
   end
 end

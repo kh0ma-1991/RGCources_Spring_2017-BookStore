@@ -1,4 +1,16 @@
 module CatalogHelper
+  def filters
+    %w(newest_first popular_first price_asc
+       price_desc title_asc title_desc)
+  end
+
+  def current_filter
+    filter = params[:filter]
+    return filters.first unless filter
+    return filters.first unless filters.include? filter
+    filter
+  end
+
   def current_page
     return 1 unless params[:page]
     params[:page].to_i
@@ -13,16 +25,24 @@ module CatalogHelper
     params[:category]
   end
 
+  def current_category_name
+    category = Category.find_by_id(current_category)
+    return category.name if category
+    t('all')
+  end
+
   def books_paged
-    categorized_books.page(1).per(current_page*8).decorate
+    ordered_books.page(1).per(current_page*8).decorate
   end
 
   def last_page?
-    categorized_books.page(current_page).last_page?
+    page = ordered_books.page(current_page)
+    page.last_page? || page.out_of_range?
   end
 
   def anchor
-    categorized_books.page(next_page).first.id
+     book = ordered_books.page(next_page).first
+     book.id if book
   end
 
   def count_books(category_id)
@@ -34,6 +54,35 @@ module CatalogHelper
 
   def categorized_books
     return Book.all unless current_category
-    Category.find(current_category).books
+    return Book.all unless a = Category.find_by_id(current_category)
+    a.books
+  end
+
+  def ordered_books
+    send(current_filter)
+  end
+
+  def newest_first
+    categorized_books.order(year: :desc)
+  end
+
+  def popular_first
+    categorized_books #TODO
+  end
+
+  def price_asc
+    categorized_books.order(price: :asc)
+  end
+
+  def price_desc
+    categorized_books.order(price: :desc)
+  end
+
+  def title_asc
+    categorized_books.order(title: :asc)
+  end
+
+  def title_desc
+    categorized_books.order(title: :desc)
   end
 end
