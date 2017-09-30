@@ -30,6 +30,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  home: "Home"
   buy_now_button: "Buy now"
   previous_button: "Previous"
   next_button: "Next"
@@ -47,3 +48,13 @@ en:
   dimensions: "Dimensions"
   materials: "Materials"
   quantity: "Quantity"
+  catalog: "Catalog"
+  view_more: "View more"
+  all: "All"
+  newest_first: "Newest first"
+  popular_first: "Popular first"
+  price_asc: "Price: Low to hight"
+  price_desc: "Price: Hight to low"
+  title_asc: "Title A - Z"
+  title_desc: "Title Z - A"
+

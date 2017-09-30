@@ -55,4 +55,13 @@ ActiveAdmin.register Book do
     end
     f.actions
   end
+
+  index do
+    selectable_column
+    columns_to_exclude = %w(description cover materials dimensions)
+    (Book.column_names - columns_to_exclude).each do |c|
+      column c.to_sym
+    end
+    actions
+  end
 end
