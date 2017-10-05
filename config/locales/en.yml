@@ -57,4 +57,5 @@ en:
   price_desc: "Price: Hight to low"
   title_asc: "Title A - Z"
   title_desc: "Title Z - A"
+  success_add: "The book was successfully added to cart"
 

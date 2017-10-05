@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'catalog/index'
+  resources :order_item, only: :create
+  resources :catalog, only: :index
+  resources :cart, only: [:update, :index]
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

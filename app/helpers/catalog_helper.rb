@@ -41,8 +41,8 @@ module CatalogHelper
   end
 
   def anchor
-     book = ordered_books.page(next_page).first
-     book.id if book
+    book = ordered_books.page(next_page).first
+    book.id if book
   end
 
   def count_books(category_id)
