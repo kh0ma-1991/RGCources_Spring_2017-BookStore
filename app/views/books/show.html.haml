@@ -23,16 +23,12 @@
       .row
         .col-xs-12.col-md-4
           %p.h1.in-gold-500.mt-10= price_in_currency(@book.price)
-        .col-xs-5.col-md-3
-          .input-group.general-position
-            %a.input-link{href: "#", id: 'quantity_minus'}
-              %i.fa.fa-minus.line-height-40
-            %input.form-control.quantity-input#quantity_to_buy{type: "text", value: 1, readonly: true}
-            %input#quantity{type: "hidden", value: "#{@book.quantity}", readonly: true}
-            %a.input-link{href: "#", id: 'quantity_plus'}
-              %i.fa.fa-plus.line-height-40
-        .col-xs-7.col-md-5
-          %button.btn.btn-default.pull-right.general-position= t("add_to_cart")
+        = form_for OrderItem.new, remote: true do |f|
+          = f.hidden_field :book_id, value: @book.id
+          .col-xs-5.col-md-3
+            .input-group.general-position= render 'book_quantity', {book: @book, f: f}
+          .col-xs-7.col-md-5
+            =f.submit t("add_to_cart"), class: 'btn btn-default pull-right general-position', disabled: @book.quantity <= 0
       .general-info-wrap.divider-lg
         %p= t("description")
         #short_description
@@ -58,7 +54,7 @@
       .general-info-wrap.divider-lg
         .clearfix
           %p.pull-left= t("quantity")
-          %p.lead.small.pull-right= @book.quantity
+          %p.lead.small.pull-right#book-quantity= @book.quantity
   .mb-80
     %h3.in-gold-500.mb-25 Reviews (3)
     .general-message-wrap.divider-lg

@@ -21,7 +21,7 @@
                   %p.lead= truncate(book.description, length: 400)
                   %p.lead.small= book.authors_decorated
                   .general-align
-                    %button.disabled.btn= t('buy_now_button')
+                    = button_to t('buy_now_button'), order_items_path(order_item: {book_id: book.id, quantity: 1}), method: :post, remote: true, class: 'btn btn-primary', disabled: book.quantity <= 0
       %a.left.carousel-control{href: '#slider', role: 'button', 'data-slide': 'prev'}
         %span.icon-prev{'aria-hidden': 'true'}
         %span.sr-only= t('previous_button')
@@ -33,7 +33,7 @@
     %h2.h1= t('welcome_message')
     .mb-res-50
       %p= t('shop_description')
-    %button.btn.btn-default= t('get_started_button')
+    = button_to t('get_started_button'), catalog_index_path, method: :get, remote: false, class: 'btn btn-default'
   .mb-35
     %h3 Best Sellers
     .row

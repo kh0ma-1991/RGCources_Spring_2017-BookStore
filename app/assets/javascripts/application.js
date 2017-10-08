@@ -13,5 +13,6 @@
 //= require rails-ujs
 //= require jquery
 //= require bootstrap
+//= require notify.min
 //= require shared/bookCoverGenerator
 //= require_tree .

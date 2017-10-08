@@ -1,0 +1,9 @@
+- if @order_item
+  if ($('.shop-quantity').length == 0) $('.shop-icon').html('<span class="shop-quantity"></span>');
+  $('.shop-quantity').html("#{@order.quantity}");
+  $('#book-quantity').html("#{@order_item.book.quantity}");
+  $('#available-quantity').val("#{@order_item.book.quantity}");
+  $('#quantity').val("#{@order_item.book.quantity > 0 ? 1 : 0}").trigger('change');
+  $.notify("#{t('success_add')}", { position:"right bottom", className: "success" });
+- else
+  $.notify("#{flash[:error]}", { position:"right bottom", className: "error" });
