@@ -1,6 +1,9 @@
 $.notify("#{t('success')}", { position:"right bottom", className: "success" });
 $("#order_item_row_#{params[:id]}").remove();
-- if (@order_quantity <= 0)
+$("#xs_order_item_row_#{params[:id]}").remove();
+- if (@order.quantity <= 0)
   $('.shop-quantity').remove();
 - else
-  $('.shop-quantity').html("#{@order_quantity}");
+  $('.shop-quantity').html("#{@order.quantity}");
+$('#subtotal').html("#{price_in_currency @order.subtotal}");
+$('#total').html("#{price_in_currency @order.total_price}");

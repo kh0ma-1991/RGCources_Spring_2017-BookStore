@@ -1,0 +1,8 @@
+$.notify("#{flash[:error]}", { position:"right bottom", className: "error" });
+$("#order_item_quantity_#{@order_item.id}").val("#{@order_item.quantity}");
+$("#order_item_total_price_#{@order_item.id}").html("#{price_in_currency @order_item.total_price}");
+$("#xs_order_item_quantity_#{@order_item.id}").val("#{@order_item.quantity}");
+$("#xs_order_item_total_price_#{@order_item.id}").html("#{price_in_currency @order_item.total_price}");
+$('.shop-quantity').html("#{@order.quantity}");
+$('#subtotal').html("#{price_in_currency @order.subtotal}");
+$('#total').html("#{price_in_currency @order.total_price}");

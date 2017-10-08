@@ -66,4 +66,10 @@ en:
   quantity: "Quantity"
   out_of_stock: "Out of stock"
   success: "Success"
+  order_summary: "Order Summary"
+  order_subtotal: "Subtotal:"
+  apply_coupon: "Apply Coupon"
+  enter_coupon: "Enter Your Coupon Code"
+  coupon: "Coupon:"
+  order_total: "Order Total:"
 
