@@ -1,0 +1,6 @@
+$.notify("#{t('success')}", { position:"right bottom", className: "success" });
+$("#order_item_row_#{params[:id]}").remove();
+- if (@order_quantity <= 0)
+  $('.shop-quantity').remove();
+- else
+  $('.shop-quantity').html("#{@order_quantity}");

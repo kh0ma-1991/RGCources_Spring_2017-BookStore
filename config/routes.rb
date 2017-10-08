@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :order_item, only: :create
+  resources :order_items, only: [:create, :update, :destroy]
   resources :catalog, only: :index
-  resources :cart, only: [:update, :index]
+  resources :cart, only: :index
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

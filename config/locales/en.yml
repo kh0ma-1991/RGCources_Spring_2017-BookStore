@@ -58,4 +58,12 @@ en:
   title_asc: "Title A - Z"
   title_desc: "Title Z - A"
   success_add: "The book was successfully added to cart"
+  cart: "Cart"
+  checkout: "Checkout"
+  product: "Product"
+  price: "Price"
+  subtotal: "Subtotal"
+  quantity: "Quantity"
+  out_of_stock: "Out of stock"
+  success: "Success"
 
