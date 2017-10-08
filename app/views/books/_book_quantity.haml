@@ -1,0 +1,6 @@
+%a.input-link{href: "#", id: 'quantity_minus'}
+  %i.fa.fa-minus.line-height-40
+=f.text_field :quantity, class: 'form-control quantity-input', id: :quantity, value: "#{book.quantity > 0 ? 1 : 0}", readonly: true
+%input#available-quantity{type: "hidden", value: "#{book.quantity}", readonly: true}
+%a.input-link{href: "#", id: 'quantity_plus'}
+  %i.fa.fa-plus.line-height-40

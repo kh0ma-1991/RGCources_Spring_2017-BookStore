@@ -19,18 +19,22 @@ $ ->
 
   $('#quantity_minus').on 'click', (e) ->
     e.preventDefault()
-    value_to_set = get_quantity_to_buy()-1
+    value_to_set = get_quantity()-1
     value_to_set = 0 if value_to_set < 0
-    $('#quantity_to_buy').val(value_to_set)
+    $('#quantity').val(value_to_set).trigger('change')
 
   $('#quantity_plus').on 'click', (e) ->
     e.preventDefault()
-    value_to_set = get_quantity_to_buy()+1
-    value_to_set = get_quantity() if value_to_set > get_quantity()
-    $('#quantity_to_buy').val(value_to_set)
+    value_to_set = get_quantity()+1
+    value_to_set = get_avaiable_quantity() if value_to_set > get_avaiable_quantity()
+    $('#quantity').val(value_to_set).trigger('change')
+
+  get_avaiable_quantity = ->
+    parseInt($('#available-quantity').val())
 
   get_quantity = ->
     parseInt($('#quantity').val())
 
-  get_quantity_to_buy = ->
-    parseInt($('#quantity_to_buy').val())
+  $('#quantity').on 'change', (e) ->
+    $('input[type=submit]').prop('disabled', true) if get_quantity() <= 0
+    $('input[type=submit]').prop('disabled', false) if get_quantity() > 0
