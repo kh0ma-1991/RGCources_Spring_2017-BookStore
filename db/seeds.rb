@@ -10,6 +10,7 @@ require 'ffaker'
 cover_materials = ['Hard cover', 'Spiral cover', 'Saddle stitch', 'Soft cover']
 paper_materials = ['glossy paper', 'matte paper']
 categories = ['Web Design', 'Photo Web', 'Development', 'Mobile Development']
+coupons = %w(QWERTY COUPON DISCOUNT)
 
 
 rand(3..10).times do
@@ -18,6 +19,11 @@ end
 
 categories.each do | name |
   Category.create(name: name)
+end
+
+coupons.each do | secret_code |
+  Coupon.create(secret_code: secret_code,
+                discount: rand(0.01..0.5))
 end
 
 rand(100..150).times do

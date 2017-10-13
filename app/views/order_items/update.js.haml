@@ -6,3 +6,4 @@ $("#xs_order_item_total_price_#{@order_item.id}").html("#{price_in_currency @ord
 $('.shop-quantity').html("#{@order.quantity}");
 $('#subtotal').html("#{price_in_currency @order.subtotal}");
 $('#total').html("#{price_in_currency @order.total_price}");
+$('#coupon_discount').html("#{price_in_currency discount}");
