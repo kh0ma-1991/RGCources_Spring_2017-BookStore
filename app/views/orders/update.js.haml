@@ -1,0 +1,6 @@
+- if flash[:error]
+  $.notify("#{flash[:error].html_safe}", { position:"right bottom", className: "error" });
+- else
+  $('#subtotal').html("#{price_in_currency @order.subtotal}");
+  $('#total').html("#{price_in_currency @order.total_price}");
+  $('#coupon_discount').html("#{price_in_currency discount}");
