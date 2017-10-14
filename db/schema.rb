@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171008204758) do
+ActiveRecord::Schema.define(version: 20171014105909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,16 @@ ActiveRecord::Schema.define(version: 20171008204758) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "coupons", force: :cascade do |t|
+    t.bigint "order_id"
+    t.boolean "used", default: false, null: false
+    t.string "secret_code", null: false
+    t.decimal "discount", precision: 3, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_coupons_on_order_id"
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.bigint "book_id"
     t.bigint "order_id"
@@ -99,6 +109,7 @@ ActiveRecord::Schema.define(version: 20171008204758) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "subtotal", precision: 12, scale: 3
+    t.string "status"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -110,6 +121,7 @@ ActiveRecord::Schema.define(version: 20171008204758) do
   end
 
   add_foreign_key "books", "categories"
+  add_foreign_key "coupons", "orders"
   add_foreign_key "order_items", "books"
   add_foreign_key "order_items", "orders"
 end
