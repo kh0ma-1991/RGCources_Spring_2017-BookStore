@@ -72,4 +72,7 @@ en:
   enter_coupon: "Enter Your Coupon Code"
   coupon: "Coupon:"
   order_total: "Order Total:"
+  update_cart: "Update cart"
+  wrong_coupon: "The coupon you've entered is wrong"
+  used_coupon: "The coupon you've entered is used"
 
