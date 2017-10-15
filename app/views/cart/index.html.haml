@@ -77,7 +77,7 @@
         .input-group.general-input-group
           %label.input-label= t('enter_coupon')
           = form_for @order, action: :update, remote: true do |f|
-            = text_field_tag :secret_code, @order.coupon.secret_code, class: 'form-control mb-30', placeholder: t('enter_coupon')
+            = text_field_tag :secret_code, secret_code, class: 'form-control mb-30', placeholder: t('enter_coupon')
             %div
               = f.submit t('update_cart'), class: 'btn btn-primary mb-15 res-block'
               -#%button.btn.btn-primary.mr-5.mb-15.visible-xs-inline-block= t('update_cart')

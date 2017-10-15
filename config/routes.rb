@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :checkout, only: [:show, :update]
   resources :orders, only: :update
   resources :order_items, only: [:create, :update, :destroy]
   resources :catalog, only: :index
