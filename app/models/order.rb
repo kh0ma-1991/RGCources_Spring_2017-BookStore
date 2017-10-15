@@ -1,7 +1,28 @@
 class Order < ApplicationRecord
+  include AASM
+
   has_many :order_items
   has_one :coupon
   before_save :set_quantity, :calculate
+
+  aasm :status do
+    state :in_progress, initial: true
+    state :in_queue
+    state :delivering
+    state :done
+
+    event :checkout do
+      transitions from: :in_progress, to: :in_queue
+    end
+
+    event :start_delivery do
+      transitions from: :in_queue, to: :delivering
+    end
+
+    event :complete do
+      transitions from: :delivering, to: :done
+    end
+  end
 
   private
 
