@@ -101,5 +101,7 @@
                 %strong.font-18= t('order_total')
               %td
                 %strong.font-18#total= price_in_currency @order.total_price
-          %button.btn.btn-default.mb-20.visible-xs-inline-block= t('checkout')
-  %button.btn.btn-default.mb-20.hidden-xs.center-block= t('checkout')
+          = button_to t('checkout'), checkout_index_path, method: :get, class: 'btn btn-default mb-20 visible-xs-inline-block'
+          -#%button.btn.btn-default.mb-20.visible-xs-inline-block= t('checkout')
+  -#%button.btn.btn-default.mb-20.hidden-xs.center-block= t('checkout')
+  = button_to t('checkout'), checkout_index_path, method: :get, class: 'btn btn-default mb-20 hidden-xs center-block'

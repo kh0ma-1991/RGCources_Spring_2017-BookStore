@@ -75,4 +75,11 @@ en:
   update_cart: "Update cart"
   wrong_coupon: "The coupon you've entered is wrong"
   used_coupon: "The coupon you've entered is used"
+  checkout: "Checkout"
+  addresses: "Address"
+  shipping: "Delivery"
+  payment: "Payment"
+  confirm: "Confirm"
+  complete: "Complete"
+  save_and_continue: "Save and Continue"
 

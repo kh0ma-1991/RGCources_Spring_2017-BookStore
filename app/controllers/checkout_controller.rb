@@ -2,7 +2,7 @@ class CheckoutController < ApplicationController
   include Wicked::Wizard
   include CheckoutStepping
 
-  steps :addresses, :shipping, :payment, :confirm, :complete
+  steps :login, :addresses, :shipping, :payment, :confirm, :complete
 
   def show
     checkout_step

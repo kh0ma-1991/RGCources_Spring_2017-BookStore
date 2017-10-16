@@ -9,6 +9,11 @@ module CheckoutStepping
       send("#{update ? 'update' : 'show'}_#{step}")
     end
 
+    def show_login
+      jump_to(next_step)
+      render_wizard
+    end
+
     def show_addresses
       render_wizard
     end
