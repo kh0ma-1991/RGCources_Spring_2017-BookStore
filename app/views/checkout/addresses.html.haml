@@ -1,6 +1,6 @@
 %main.container
   = render 'steps'
-  %form.res-mb-100
+  = form_for @order, url: wizard_path,class: 'res-mb-100' do |f|
     .hidden-xs.hidden-sm
       .row
         .col-md-5
@@ -13,56 +13,15 @@
         .visible-xs.visible-sm
           %h3.general-subtitle Billing Address
           %p.general-info-text all fields are required
-        .form-group.has-error
-          %label.control-label.input-label{for: "firstName"} First Name
-          %input#firstName.form-control{name:"fname", type: "text", placeholder: "First Name"}
-          %span.help-block Please enter your first name
-        .form-group
-          %label.control-label.input-label{for: "lastName"} Last Name
-          %input#lastName.form-control{name:"lname", type: "text", placeholder: "Last Name"}
-        .form-group
-          %label.control-label.input-label{for: "address"} Address
-          %input#address.form-control{name: "address", type: "text", placeholder: "Address"}
-        .form-group
-          %label.control-label.input-label{for: "city"} City
-          %input#city.form-control{name: "city", type: "text", placeholder: "City"}
-        .form-group
-          %label.control-label.input-label{for: "zip"} Zip
-          %input#zip.form-control{name: "zip", type: "text", placeholder: "Zip"}
-        .form-group
-          %label.control-label.input-label{for: "сountry"} Country
-          %input#country.form-control{name: "country", type: "text", placeholder: "Select a country"}
-        .form-group
-          %label.control-label.input-label{for: "phone"} Phone
-          %input#phone.form-control{name: "phone", type: "tel", placeholder: "Example +355 66 123 4567"}
+        = f.fields_for @order.shipping_address do |f|
+          - errors = @order.shipping_address.errors
+          = render 'address_form', errors: errors, f: f
       .col-md-5.col-md-offset-1.mb-60
         .visible-xs.visible-sm
           %h3.general-subtitle Shipping Address
-        .form-group.has-error
-          %label.control-label.input-label{for: "firstName"} First Name
-          %input#firstName.form-control{name:"fname", type: "text", placeholder: "First Name"}
-          %span.help-block Please enter your first name
-        .form-group
-          %label.control-label.input-label{for: "lastName"} Last Name
-          %input#lastName.form-control{name:"lname", type: "text", placeholder: "Last Name"}
-        .form-group
-          %label.control-label.input-label{for: "address"} Address
-          %input#address.form-control{name: "address", type: "text", placeholder: "Address"}
-        .form-group
-          %label.control-label.input-label{for: "city"} City
-          %input#city.form-control{name: "city", type: "text", placeholder: "City"}
-        .form-group
-          %label.control-label.input-label{for: "zip"} Zip
-          %input#zip.form-control{name: "zip", type: "text", placeholder: "Zip"}
-        .form-group
-          %label.control-label.input-label{for: "сountry"} Country
-          %select#country.form-control{name: "country", placeholder: "Select a country"}
-            %option London
-            %option London
-            %option London
-        .form-group
-          %label.control-label.input-label{for: "phone"} Phone
-          %input#phone.form-control{name: "phone", type: "tel", placeholder: "Example +355 66 123 4567"}
+        = f.fields_for @order.billing_address do |f|
+          - errors = @order.billing_address.errors
+          = render 'address_form', errors: errors, f: f
         .form-group.checkbox
           %label.checkbox-label
             %input.checkbox-input{type: "checkbox", hidden: "true"}
@@ -85,8 +44,8 @@
       = button_to t('save_and_continue'), wizard_path, method: :put, class: 'btn btn-default center-block mb-20'
       -#%button.btn.disabled.center-block.mb-20 Save and Continue
 
-
-= "adresses"
--#= link_to 'previous', previous_wizard_path
-= link_to 'save', @order, href: wizard_path, method: :put
-= link_to 'next', next_wizard_path
+-#
+-#= "adresses"
+-#-#= link_to 'previous', previous_wizard_path
+-#= link_to 'save', @order, href: wizard_path, method: :put
+-#= link_to 'next', next_wizard_path

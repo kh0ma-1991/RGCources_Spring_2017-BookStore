@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    attributes:
+      address:
+        first_name: "First Name"
+        last_name: "Last Name"
+        address: "Address"
+        city: "City"
+        zip: "Zip"
+        country: "Country"
+        phone: "Phone"
+  select_a_country: "Select a country"
+  phone_placeholder: "Example +355 66 123 4567"

@@ -15,6 +15,8 @@ module CheckoutStepping
     end
 
     def show_addresses
+      @order.shipping_address ||= ShippingAddress.new
+      @order.billing_address  ||= BillingAddress .new
       render_wizard
     end
 
