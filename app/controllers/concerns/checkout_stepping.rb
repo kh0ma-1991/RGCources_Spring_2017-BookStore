@@ -15,8 +15,8 @@ module CheckoutStepping
     end
 
     def show_addresses
-      @order.shipping_address ||= ShippingAddress.new
-      @order.billing_address  ||= BillingAddress .new
+      @shipping = @order.shipping_address || ShippingAddress.new
+      @billing  = @order.billing_address  || BillingAddress .new
       render_wizard
     end
 
@@ -41,7 +41,12 @@ module CheckoutStepping
     end
 
     def update_addresses
-      session[:addresses] = true
+      @shipping = @order.shipping_address || ShippingAddress.new(order: @order)
+      @billing  = @order.billing_address  || BillingAddress .new(order: @order)
+      shipping = @shipping.update(use_billing? ? billing_address_params : shipping_address_params)
+      billing  = @billing .update(billing_address_params )
+      return render_wizard unless shipping && billing
+      session[:addresses] = shipping && billing
     end
 
     def update_shipping
@@ -58,6 +63,32 @@ module CheckoutStepping
 
     def update_complete
       session[:complete] = true
+    end
+
+    def shipping_address_params
+      address_params(:shipping_address)
+    end
+
+    def billing_address_params
+      address_params(:billing_address)
+    end
+
+    def address_params(type)
+      params.require(:order)
+            .require(type)
+            .permit(:first_name,
+                    :last_name,
+                    :address,
+                    :city,
+                    :zip,
+                    :country,
+                    :phone)
+    end
+
+    def use_billing?
+      return false unless params[:address]
+      params.require(:address)
+            .require(:use_billing) == 'true'
     end
   end
 end

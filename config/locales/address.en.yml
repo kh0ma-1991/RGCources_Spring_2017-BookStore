@@ -9,5 +9,42 @@ en:
         zip: "Zip"
         country: "Country"
         phone: "Phone"
+    errors:
+        models:
+          address:
+            attributes:
+              first_name:
+                blank: "First name cannot be blank"
+                only_letters: "First name should contain only letters"
+                too_long: "Maximum 50 symbols length is allowed"
+              last_name:
+                blank: "Last name cannot be blank"
+                only_letters: "Last name should contain only letters"
+                too_long: "Maximum 50 symbols length is allowed"
+              address:
+                blank: "Address cannot be blank"
+                address_valid: "Address should contain only letters, numbers, comas or dotes"
+                too_long: "Maximum 50 symbols length is allowed"
+              city:
+                blank: "City cannot be blank"
+                only_letters: "City should contain only letters"
+                too_long: "Maximum 50 symbols length is allowed"
+              zip:
+                blank: "Zip cannot be blank"
+                too_long: "Maximum 10 symbols length is allowed"
+                not_a_number: "Zip should contain only numbers"
+              country:
+                blank: "Country cannot be blank"
+                only_letters: "Country should contain only letters"
+                too_long: "Maximum 50 symbols length is allowed"
+              phone:
+                blank: "Phone cannot be blank"
+                not_a_number: "Phone should contain only numbers"
+                too_long: "Maximum 15 symbols length is allowed"
+                start_with_plus_sign: "Phone must start with a plus sign"
   select_a_country: "Select a country"
   phone_placeholder: "Example +355 66 123 4567"
+  shipping_address: "Shipping Address"
+  billing_address: "Billing Address"
+  all_fields_required: "all fields are required"
+  use_billing: "Use Billing Address"
