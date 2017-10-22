@@ -5,6 +5,7 @@ class Order < ApplicationRecord
   has_one :coupon
   has_one :shipping_address
   has_one :billing_address
+  belongs_to :delivery, optional: true
   before_save :set_quantity, :calculate
 
   aasm :status do

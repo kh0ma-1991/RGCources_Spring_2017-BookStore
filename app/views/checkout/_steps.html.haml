@@ -2,9 +2,9 @@
 %ul.steps.list-inline
   - wizard_steps.each_with_index do |wizard_step,index|
     - next if wizard_step == :login
-    %li.step{class: "#{'active' if wizard_step == step}"}
+    %li.step{class: "#{'active' if wizard_step == step || session[wizard_step]}"}
       = link_to wizard_path wizard_step do
-        %span.step-number= index
+        %span.step-number= session[wizard_step] ? '<i class="fa fa-check" aria-hidden="true"></i>'.html_safe : index
         %span.step-text.hidden-xs= t(wizard_step)
         - unless index == wizard_steps.length-1
           %li.step-divider

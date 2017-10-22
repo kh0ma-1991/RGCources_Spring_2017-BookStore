@@ -13,6 +13,10 @@ categories = ['Web Design', 'Photo Web', 'Development', 'Mobile Development']
 coupons = %w(QWERTY COUPON DISCOUNT)
 
 
+Delivery.create(method: 'by_train', days: 'from_3_to_7', price: 5.55 )
+Delivery.create(method: 'by_car'  , days: 'from_2_to_5', price: 15.75)
+Delivery.create(method: 'teleport', days: 'from_0_to_1', price: 59.99)
+
 rand(3..10).times do
   Author.create(name: [FFaker::Name.first_name, FFaker::Name.last_name].join(' '))
 end

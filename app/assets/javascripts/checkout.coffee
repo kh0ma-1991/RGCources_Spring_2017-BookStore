@@ -4,4 +4,6 @@
 $ ->
   $('#address_use_billing').on 'change', (e) ->
     e.preventDefault
-    $('[name^="order[shipping_address]"').closest('div').fadeToggle( "slow", "linear" )
+    $('[name^="order[shipping_address]"')
+                .closest('.form-group')
+                .fadeToggle( "slow", "linear" )

@@ -21,6 +21,7 @@ module CheckoutStepping
     end
 
     def show_shipping
+      @deliveries = Delivery.all
       jump_to(previous_step) unless session[:addresses]
       render_wizard
     end
@@ -45,12 +46,14 @@ module CheckoutStepping
       @billing  = @order.billing_address  || BillingAddress .new(order: @order)
       shipping = @shipping.update(use_billing? ? billing_address_params : shipping_address_params)
       billing  = @billing .update(billing_address_params )
-      return render_wizard unless shipping && billing
+      render_wizard unless shipping && billing
       session[:addresses] = shipping && billing
     end
 
     def update_shipping
-      session[:shipping] = true
+      delivery = @order.update(delivery_params)
+      render_wizard unless delivery
+      session[:shipping] = delivery
     end
 
     def update_payment
@@ -89,6 +92,10 @@ module CheckoutStepping
       return false unless params[:address]
       params.require(:address)
             .require(:use_billing) == 'true'
+    end
+
+    def delivery_params
+      params.require(:order).permit(:delivery_id)
     end
   end
 end
