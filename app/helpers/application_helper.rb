@@ -9,4 +9,9 @@ module ApplicationHelper
     end
     0
   end
+
+  def shipping_price
+    delivery = @order.delivery
+    delivery ? delivery.price : 0
+  end
 end

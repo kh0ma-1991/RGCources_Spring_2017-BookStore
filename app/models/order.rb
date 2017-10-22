@@ -36,6 +36,7 @@ class Order < ApplicationRecord
   def calculate
     self.subtotal = order_items.sum(:total_price)
     discount = coupon ? coupon.discount : 0
-    self.total_price = subtotal*(1-discount)
+    delivery_price = self.delivery ? self.delivery.price : 0
+    self.total_price = subtotal*(1-discount) + delivery_price
   end
 end
