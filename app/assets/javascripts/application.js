@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require notify.min
 //= require shared/bookCoverGenerator
+//= require 'maskedinput'
 //= require_tree .

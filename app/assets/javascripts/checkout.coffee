@@ -7,3 +7,9 @@ $ ->
     $('[name^="order[shipping_address]"')
                 .closest('.form-group')
                 .fadeToggle( "slow", "linear" )
+
+  $('[data-toggle="tooltip"]').tooltip();
+
+  $('#number').mask('9999 9999 9999 9999', {autoclear: false})
+  $('#cvv').mask('9999', {autoclear: false})
+  $('#expiry').mask('99 / 99', {autoclear: false})

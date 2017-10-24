@@ -7,6 +7,7 @@ end
 
 ruby '2.4.1'
 # gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'maskedinput-rails', '~> 1.4', '>= 1.4.1.0'
 gem 'country_select', '~> 3.1', '>= 3.1.1'
 gem 'wicked', '~> 1.3', '>= 1.3.2'
 gem 'aasm', '=4.12.2'

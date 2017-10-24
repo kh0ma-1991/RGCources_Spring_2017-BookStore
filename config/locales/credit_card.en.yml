@@ -1,0 +1,31 @@
+en:
+  activerecord:
+    attributes:
+      credit_card:
+        name: "Name on Card"
+        number: "Number"
+        cvv: "CVV"
+        expiration_date: "MM / YY"
+    errors:
+      models:
+        credit_card:
+          attributes:
+            name:
+              blank: "Name on Card cannot be blank"
+              only_letters: "Name should contain only letters"
+              too_long: "Maximum 50 symbols length is allowed in Name on Card field"
+            number:
+              blank: "Number cannot be blank"
+              only_digits: "Please enter all 16 digits placed on front of your card"
+            cvv:
+              blank: "CVV cannot be blank"
+              too_short: "CVV should contain at least 3 digits"
+            expiration_date:
+              blank: "MM / YY cannot be blank"
+              expiry_format: "Please enter your valid expiry in corresponding format (MM / YY)"
+  placeholder:
+    credit_card:
+      name: "Name on Card"
+      number: "Card Number"
+      cvv: "CVV"
+      expiration_date: "MM / YY"

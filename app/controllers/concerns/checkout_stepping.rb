@@ -27,6 +27,7 @@ module CheckoutStepping
     end
 
     def show_payment
+      @credit_card = @order.credit_card || CreditCard.new
       jump_to(previous_step) unless session[:shipping]
       render_wizard
     end
@@ -57,6 +58,9 @@ module CheckoutStepping
     end
 
     def update_payment
+      @credit_card = @order.credit_card || CreditCard.new(order: @order)
+      credit_card = @credit_card.update(credit_card_params)
+      render_wizard unless credit_card
       session[:payment] = true
     end
 
@@ -86,6 +90,15 @@ module CheckoutStepping
                     :zip,
                     :country,
                     :phone)
+    end
+
+    def credit_card_params
+      params.require(:order)
+            .require(:credit_card)
+            .permit(:name,
+                    :number,
+                    :expiration_date,
+                    :cvv)
     end
 
     def use_billing?
