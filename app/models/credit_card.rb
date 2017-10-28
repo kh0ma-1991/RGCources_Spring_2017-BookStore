@@ -14,7 +14,7 @@ class CreditCard < ApplicationRecord
             length: { maximum: 50 },
             allow_blank: true
   validates_format_of :expiration_date,
-                      with: /\A(0?[1-9]|1[012])\s\/\s[1-9]{2}\z/,
+                      with: /\A(0?[1-9]|1[012])\s\/\s20[1-9]{2}\z/,
                       allow_blank: true,
                       message: :expiry_format
   validates :cvv,

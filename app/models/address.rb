@@ -32,4 +32,8 @@ class Address < ApplicationRecord
     country_iso = ISO3166::Country[self.country]
     country_iso.translations[I18n.locale.to_s] || country_iso.name
   end
+
+  def full_name
+    first_name + ' ' + last_name
+  end
 end

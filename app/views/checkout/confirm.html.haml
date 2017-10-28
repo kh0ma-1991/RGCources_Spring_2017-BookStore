@@ -1,3 +1,102 @@
-= "confirm"
-= link_to 'previous', previous_wizard_path
-= link_to 'next', next_wizard_path
+%main.container.general-main-wrap
+  = render 'steps'
+  .row.mb-20
+    = render 'confirm_address', address: @order.shipping_address
+    = render 'confirm_address', address: @order.billing_address
+    .col-sm-3
+      %h3.general-subtitle= t('shipments')
+      %p.general-address
+        = t("delivery.method.#{@order.delivery.method}")
+        = link_to t('edit'), wizard_path(:shipping), class: 'general-edit'
+        %br
+        = "#{t('price')} #{price_in_currency @order.delivery.price}"
+    .col-sm-3
+      %h3.general-subtitle= t('payment_information')
+      %p.general-address
+        = @order.credit_card.number.gsub(/\d{4}\s/, '**** ')
+        = link_to t('edit'), wizard_path(:payment), class: 'general-edit'
+        %br
+        = @order.credit_card.expiration_date
+  .visible-xs
+    - @order.order_items.each do | order_item |
+      - book = order_item.book
+      .general-cart-item.divider-lg.mb-55
+        .general-img-wrap-table
+          -if(!book.cover.file.nil?)
+            = image_tag book.cover, alt: 'book-image-here', class: 'cart-img-shadow'
+          -else
+            =render 'shared/book_cover_generator', book: book, width: 140, height: 223, class: 'cart-img-shadow'
+        %p.title= book.title
+        %table.table
+          %tr
+            %td
+              %span.in-grey-600= t('price')
+            %td
+              %span.font-16.in-gold-500= price_in_currency book.price
+          %tr
+            %td.vertical-middle
+              %span.in-grey-600= t('quantity')
+            %td
+              %span= order_item.quantity
+          %tr
+            %td
+              %span.in-grey-600= t('total')
+            %td
+              %span.font-16.in-gold-500= price_in_currency order_item.total_price
+  .hidden-xs.divider-lg.pt-20
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t('book')
+          %th.col-method
+          %th
+            %span.in-grey-600= t('price')
+          %th
+            %span.in-grey-600= t('quantity')
+          %th
+            %span.in-grey-600= t('total')
+      %tbody
+        - @order.order_items.each do | order_item |
+          - book = order_item.book
+          %tr
+            %td
+              .general-img-wrap-table
+                -if(!book.cover.file.nil?)
+                  = image_tag book.cover, alt: 'book-image-here', class: 'cart-img-shadow pull-left'
+                -else
+                  =render 'shared/book_cover_generator', book: book, width: 68, height: 108, class: 'cart-img-shadow pull-left'
+            %td
+              %p.title= book.title
+              %p.in-grey-600.fw-300= truncate(book.description, length: 140)
+            %td
+              %span.font-16.in-gold-500= price_in_currency book.price
+            %td
+              %span.ml-30= order_item.quantity
+            %td
+              %span.font-16.in-gold-500= price_in_currency order_item.total_price
+  .text-center.general-text-right
+    %p.in-gold-500.font-18= t('order_summary')
+    %table.general-summary-table.general-summary-table-right.general-text-right
+      %tr
+        %td
+          %p.font-16= t('order_subtotal')
+        %td
+          %p.font-16= price_in_currency @order.subtotal
+      %tr
+        %td
+          %p.font-16= t('coupon')
+        %td
+          %p.font-16= price_in_currency discount
+      %tr
+        %td
+          %p.font-16= t('shipping_amount')
+        %td
+          %p.font-16= price_in_currency shipping_price
+      %tr
+        %td
+          %strong.font-18= t('order_total')
+        %td
+          %strong.font-18= price_in_currency @order.total_price
+  .text-center
+    = button_to t('place_order'), wizard_path, class: 'btn btn-default mb-20', method: :put

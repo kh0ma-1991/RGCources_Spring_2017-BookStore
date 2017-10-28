@@ -12,4 +12,4 @@ $ ->
 
   $('#number').mask('9999 9999 9999 9999', {autoclear: false})
   $('#cvv').mask('9999', {autoclear: false})
-  $('#expiry').mask('99 / 99', {autoclear: false})
+  $('#expiry').mask('99 / 2099', {autoclear: false})
