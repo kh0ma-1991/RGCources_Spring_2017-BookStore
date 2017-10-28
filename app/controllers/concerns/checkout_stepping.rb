@@ -15,6 +15,7 @@ module CheckoutStepping
     end
 
     def show_addresses
+      return redirect_to :root if @order.quantity <= 0
       @shipping = @order.shipping_address || ShippingAddress.new
       @billing  = @order.billing_address  || BillingAddress .new
       render_wizard
@@ -28,17 +29,17 @@ module CheckoutStepping
 
     def show_payment
       @credit_card = @order.credit_card || CreditCard.new
-      jump_to(previous_step) unless session[:shipping]
+      jump_to(previous_step) unless session[:shipping] && session[:addresses]
       render_wizard
     end
 
     def show_confirm
-      jump_to(previous_step) unless session[:payment]
+      jump_to(previous_step) unless session[:payment] && session[:shipping] && session[:addresses]
       render_wizard
     end
 
     def show_complete
-      jump_to(previous_step) unless session[:confirm]
+      jump_to(previous_step) unless session[:confirm] && session[:payment] && session[:shipping] && session[:addresses]
       render_wizard
     end
 
