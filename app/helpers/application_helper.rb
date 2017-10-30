@@ -14,4 +14,10 @@ module ApplicationHelper
     delivery = @order.delivery
     delivery ? delivery.price : 0
   end
+
+  def order_code order
+    id = order.id.to_s
+    return '#R'+id if id.length >= 9
+    '#R00000000'.slice(0,10-id.length)+id
+  end
 end

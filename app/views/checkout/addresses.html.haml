@@ -28,4 +28,6 @@
             %span.checkbox-icon
               %i.fa.fa-check
             %span.checkbox-text= t('use_billing')
-    = render 'order_summary'
+    .general-text-align
+      = render 'order_summary'
+      = button_to t('save_and_continue'), nil, class: 'btn btn-default center-block mb-20'

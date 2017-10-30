@@ -48,4 +48,6 @@
                 %span= t("delivery.days.#{delivery.days}")
               %td
                 %span.font-16.in-gold-500= price_in_currency delivery.price
-    = render 'order_summary'
+    .general-text-align
+      = render 'order_summary'
+      = button_to t('save_and_continue'), nil, class: 'btn btn-default center-block mb-20'

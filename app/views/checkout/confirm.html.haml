@@ -76,27 +76,6 @@
             %td
               %span.font-16.in-gold-500= price_in_currency order_item.total_price
   .text-center.general-text-right
-    %p.in-gold-500.font-18= t('order_summary')
-    %table.general-summary-table.general-summary-table-right.general-text-right
-      %tr
-        %td
-          %p.font-16= t('order_subtotal')
-        %td
-          %p.font-16= price_in_currency @order.subtotal
-      %tr
-        %td
-          %p.font-16= t('coupon')
-        %td
-          %p.font-16= price_in_currency discount
-      %tr
-        %td
-          %p.font-16= t('shipping_amount')
-        %td
-          %p.font-16= price_in_currency shipping_price
-      %tr
-        %td
-          %strong.font-18= t('order_total')
-        %td
-          %strong.font-18= price_in_currency @order.total_price
+    = render 'order_summary', finish: true
   .text-center
     = button_to t('place_order'), wizard_path, class: 'btn btn-default mb-20', method: :put

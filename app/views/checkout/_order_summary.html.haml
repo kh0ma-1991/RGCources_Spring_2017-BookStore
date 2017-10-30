@@ -1,24 +1,23 @@
-.general-text-align
-  %p.in-gold-500.font-18= t('order_summary')
-  %table.general-summary-table
-    %tr
-      %td
-        %p.font-16= t('subtotal')
-      %td
-        %p.font-16= price_in_currency @order.subtotal
-    %tr
-      %td
-        %p.font-16= t('coupon')
-      %td
-        %p.font-16= price_in_currency discount
-    %tr
-      %td
-        %p.font-16= t('shipping_amount')
-      %td
-        %p.font-16= price_in_currency shipping_price
-    %tr
-      %td
-        %p.font-16= t('order_total')
-      %td
-        %p.font-16= price_in_currency @order.total_price
-  = button_to t('save_and_continue'), nil, class: 'btn btn-default center-block mb-20'
+- finish ||= false
+%p.in-gold-500.font-18= t('order_summary')
+%table.general-summary-table{class: "#{'general-summary-table-right general-text-right' if finish}"}
+  %tr
+    %td
+      %p.font-16= t('subtotal')
+    %td
+      %p.font-16= price_in_currency @order.subtotal
+  %tr
+    %td
+      %p.font-16= t('coupon')
+    %td
+      %p.font-16= price_in_currency discount
+  %tr
+    %td
+      %p.font-16= t('shipping_amount')
+    %td
+      %p.font-16= price_in_currency shipping_price
+  %tr
+    %td
+      %p.font-16{class: ('thick' if finish) }= t('order_total')
+    %td
+      %p.font-16{class: ('thick' if finish) }= price_in_currency @order.total_price
