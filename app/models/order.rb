@@ -7,6 +7,7 @@ class Order < ApplicationRecord
   has_one :billing_address
   has_one :credit_card
   belongs_to :delivery, optional: true
+  belongs_to :user, optional: true
   before_save :set_quantity, :calculate
 
   aasm :status do

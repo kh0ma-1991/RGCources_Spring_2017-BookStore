@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}
   resources :checkout#, only: [:show, :update]
   resources :orders, only: :update
   resources :order_items, only: [:create, :update, :destroy]
