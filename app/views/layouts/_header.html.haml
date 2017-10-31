@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand Bookstore
+      = link_to t('bookstore'), root_path, class: 'navbar-brand'
       %a.shop-link.pull-right.visible-xs{href: "#{cart_index_path}"}
         %span.shop-icon= content_tag(:span, @order.quantity, class: 'shop-quantity') unless @order.quantity == 0
     = link_to cart_index_path, class: 'shop-link pull-right hidden-xs' do
