@@ -7,6 +7,7 @@ end
 
 ruby '2.4.1'
 # gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'mailgun_rails', '~> 0.9.0'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth', '~> 1.7', '>= 1.7.1'
 gem 'maskedinput-rails', '~> 1.4', '>= 1.4.1.0'
