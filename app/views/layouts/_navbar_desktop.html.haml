@@ -8,13 +8,19 @@
         - Category.all.each do | category |
           %li
             = link_to category.name, catalog_index_path(category: category.id)
-    %li.dropdown
-      %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} My account
-      %ul.dropdown-menu
-        %li
-          %a{href: "#"} Orders
-        %li
-          %a{href: "#"} Settings
-        %li.divider{role: "separator"}
-        %li
-          %a{href: "#"} Log out
+    - if user_signed_in?
+      %li.dropdown
+        %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} My account
+        %ul.dropdown-menu
+          %li
+            %a{href: "#"} Orders
+          %li
+            %a{href: "#"} Settings
+          %li.divider{role: "separator"}
+          %li
+            = link_to t('log_out'), destroy_user_session_path, method: :delete
+    - else
+      %li
+        =link_to t('login'), new_user_session_path
+      %li
+        =link_to t('signup'), new_user_registration_path

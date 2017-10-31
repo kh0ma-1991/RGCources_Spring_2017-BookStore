@@ -1,0 +1,13 @@
+en:
+  login: "Log In"
+  or: "or"
+  have_not_account: "Don’t have an Account?"
+  have_account: 'Have an Account?'
+  forgot_password: 'Forgot password?'
+  log_out: 'Log out'
+  signup: 'Sign Up'
+
+  activerecord:
+    attributes:
+      user:
+        email: 'Enter Email'
