@@ -1,5 +1,6 @@
 class Address < ApplicationRecord
   belongs_to :order, optional: true
+  belongs_to :user, optional: true
 
   scope :billing,  -> { where(type: 'BillingAddress')  }
   scope :shipping, -> { where(type: 'ShippingAddress') }
