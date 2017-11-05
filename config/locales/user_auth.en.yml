@@ -11,8 +11,12 @@ en:
   enter_email_placeholder: "Enter your email"
   email_instructions: "Email Instructions"
   cancel: "Cancel"
+  enter_email: 'Enter Email'
 
-  activerecord:
-    attributes:
-      user:
-        email: 'Enter Email'
+  checkout_login:
+    login: "Log In with Password"
+    already_customer: "Returning Customer"
+    new_customer: "New Customer"
+    quick_register: "Quick Register"
+    later_password: "You'll be able to create password later"
+    continue: "Continue to Checkout"

@@ -7,9 +7,11 @@
         %span.icon-bar
         %span.icon-bar
       = link_to t('bookstore'), root_path, class: 'navbar-brand'
-      %a.shop-link.pull-right.visible-xs{href: "#{cart_index_path}"}
+      = link_to cart_index_path, class: "shop-link pull-right visible-xs #{'disabled' if @order.quantity == 0}" do
         %span.shop-icon= content_tag(:span, @order.quantity, class: 'shop-quantity') unless @order.quantity == 0
-    = link_to cart_index_path, class: 'shop-link pull-right hidden-xs' do
+      -#%a.shop-link.pull-right.visible-xs{href: "#{cart_index_path}"}
+        %span.shop-icon= content_tag(:span, @order.quantity, class: 'shop-quantity') unless @order.quantity == 0
+    = link_to cart_index_path, class: "shop-link pull-right hidden-xs #{'disabled' if @order.quantity == 0}" do
       %span.shop-icon= content_tag(:span, @order.quantity, class: 'shop-quantity') unless @order.quantity == 0
     #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
       =render 'layouts/navbar_mobile'

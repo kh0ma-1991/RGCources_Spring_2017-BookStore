@@ -10,7 +10,8 @@ module CheckoutStepping
     end
 
     def show_login
-      jump_to(next_step)
+      session[:checkout] = true
+      jump_to(next_step) if current_user
       render_wizard
     end
 
@@ -41,6 +42,12 @@ module CheckoutStepping
     def show_complete
       jump_to(previous_step) unless session[:confirm] && session[:payment] && session[:shipping] && session[:addresses]
       render_wizard
+    end
+
+    def update_login
+      # https://github.com/plataformatec/devise/wiki/How-To:-Automatically-generate-password-for-users-(simpler-registration)
+      # https://stackoverflow.com/questions/27652534/devise-create-user-using-only-the-email-address
+      render_wizard unless current_user
     end
 
     def update_addresses
