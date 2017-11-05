@@ -45,8 +45,14 @@ module CheckoutStepping
     end
 
     def update_login
-      # https://github.com/plataformatec/devise/wiki/How-To:-Automatically-generate-password-for-users-(simpler-registration)
-      # https://stackoverflow.com/questions/27652534/devise-create-user-using-only-the-email-address
+      password = Devise.friendly_token.first(8)
+      user = User.create(email: fast_gin_up_email, password: password, password_confirmation: password)
+      if user.errors.any?
+        flash.now[:error] = user.errors.full_messages.join('<br>').html_safe
+      else
+        sign_in user
+        UserMailer.fast_sign_up(user,password).deliver_later
+      end
       render_wizard unless current_user
     end
 
@@ -117,6 +123,10 @@ module CheckoutStepping
 
     def delivery_params
       params.require(:order).permit(:delivery_id)
+    end
+
+    def fast_gin_up_email
+      params.require(:user).permit(:email)[:email]
     end
   end
 end

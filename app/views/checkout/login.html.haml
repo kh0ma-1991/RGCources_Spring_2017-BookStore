@@ -7,7 +7,6 @@
           %i.fa.fa-facebook-official
         %p.general-login-text= t('or')
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'general-form' }) do |f|
-        = devise_error_messages!
         .form-group
           = f.label nil, t('checkout_login.login'),class: 'control-label'
         .form-group.mb-30
@@ -25,7 +24,6 @@
           %i.fa.fa-facebook-official
         %p.general-login-text= t('or')
       = form_for(resource, as: resource_name, url: wizard_path, method: :put, html: { class: 'general-form' }) do |f|
-        = devise_error_messages!
         .form-group
           = f.label nil, t('checkout_login.quick_register'),class: 'control-label'
           %p.general-info-text= t('checkout_login.later_password')

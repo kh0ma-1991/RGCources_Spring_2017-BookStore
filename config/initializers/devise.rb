@@ -12,7 +12,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'postmaster@sandbox381597a978b44ba5a9f792578e0c397c.mailgun.org'
+  config.mailer_sender = 'book_store@bookstore.ruby'
 
   # Configure the class responsible to send e-mails.
   config.mailer = 'Devise::Mailer'

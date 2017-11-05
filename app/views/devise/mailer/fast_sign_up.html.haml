@@ -1,0 +1,4 @@
+%h1 Welcome #{@email}!
+%p Your password is: #{@token}
+%p You can change your password through the link below:
+%p= link_to 'Change password', edit_user_password_url
