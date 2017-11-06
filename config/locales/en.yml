@@ -108,3 +108,6 @@ en:
   back_to_store: "Back to Store"
   login: "Log In"
   or: "or"
+  thanks_for_order: "Thank You for your Order!"
+  confirmation_email: "An order confirmation has been sent to %{email}"
+  oder_code: "Order %{code}"

@@ -42,8 +42,6 @@ module CheckoutStepping
 
     def show_complete
       jump_to(previous_step) unless session[:confirm] && session[:payment] && session[:shipping] && session[:addresses]
-      @user = current_user
-      @saved_order = @order
       @order.checkout!
       render_wizard
     end
