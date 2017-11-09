@@ -12,6 +12,10 @@ en:
   email_instructions: "Email Instructions"
   cancel: "Cancel"
   enter_email: 'Enter Email'
+  set_new_password: "Set new password"
+  change: "Change"
+  type_new_password: 'Type a new Password'
+  confirm_new_password: 'Confirm Password'
 
   checkout_login:
     login: "Log In with Password"
