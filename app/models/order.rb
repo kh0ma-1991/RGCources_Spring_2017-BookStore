@@ -12,7 +12,7 @@ class Order < ApplicationRecord
 
   aasm :status do
     state :in_progress, initial: true
-    state :in_queue
+    state :in_queue, after_enter: :send_email
     state :delivering
     state :done
 
@@ -30,6 +30,10 @@ class Order < ApplicationRecord
   end
 
   private
+
+  def send_email
+    OrdersMailer.order_in_quee(self.id).deliver_later
+  end
 
   def set_quantity
     self.quantity = order_items.sum(:quantity)
