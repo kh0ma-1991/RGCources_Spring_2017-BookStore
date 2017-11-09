@@ -1,0 +1,53 @@
+%main.container.general-main-wrap
+  = render 'steps'
+  = form_for @order, url: wizard_path do |f|
+    %h3.general-subtitle= t('shipping_method')
+    .visible-xs
+      - @deliveries.each do | delivery |
+        .general-cart-item.divider-lg-bottom.mb-30
+          %table.table
+            %tr
+              %td.col-half
+                %span.in-grey-600= t('method')
+              %td.col-half
+                .form-group.radio.mt-0.mb-0
+                  %label.radio-label
+                    = radio_button_tag "order[delivery_id]", delivery.id, nil, {class: 'radio-input', hidden: true, id: "xs_order_delivery_#{delivery.id}"}
+                    %span.radio-icon
+                    %span.radio-text= t("delivery.method.#{delivery.method}")
+            %tr
+              %td
+                %span.in-grey-600= t('days')
+              %td
+                %span.font-16.fw-300= t("delivery.days.#{delivery.days}")
+            %tr
+              %td
+                %span.in-grey-600= t('price')
+              %td
+                %span.font-16.in-gold-500= price_in_currency delivery.price
+    .hidden-xs.mb-res-50
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.col-method
+              %span.in-grey-600.ml-40= t('method')
+            %th
+              %span.in-grey-600= t('days')
+            %th
+              %span.in-grey-600= t('price')
+        %tbody
+          - @deliveries.each do | delivery |
+            %tr
+              %td
+                .form-group.radio.mt-0.mb-0
+                  %label.radio-label
+                    = radio_button_tag "order[delivery_id]", delivery.id, nil, {class: 'radio-input', hidden: true, checked: delivery.id == current_delivery }
+                    %span.radio-icon
+                    %span.radio-text= t("delivery.method.#{delivery.method}")
+              %td
+                %span= t("delivery.days.#{delivery.days}")
+              %td
+                %span.font-16.in-gold-500= price_in_currency delivery.price
+    .general-text-align
+      = render 'order_summary'
+      = button_to t('save_and_continue'), nil, class: 'btn btn-default center-block mb-20'

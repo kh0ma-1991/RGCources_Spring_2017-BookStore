@@ -1,0 +1,29 @@
+%main.container.general-main-wrap
+  = render 'steps'
+  .text-center.mb-40
+    %h3.general-subtitle= t('thanks_for_order')
+    %p.fw-300= t('confirmation_email', email: current_user.email)
+  .row.mb-20
+    .col-sm-6
+      .visible-xs
+        %p.general-order-number.mb-0= t('oder_code', code: (order_code @order))
+        %p.general-address.mb-30= @order.updated_at.to_formatted_s(:long)
+      - address = @order.shipping_address
+      %p.general-address
+        = address.full_name
+        %br
+        = address.address
+        %br
+        = "#{address.city} #{address.zip}"
+        %br
+        = address.country_name
+        %br
+        = "#{t('phone')} #{address.phone}"
+    .col-sm-6.hidden-xs.text-right
+      %p.general-order-number.mb-0= t('oder_code', code: (order_code @order))
+      %p.general-address.mb-30= @order.updated_at.to_formatted_s(:long)
+  = render 'books'
+  .text-center.general-text-right
+    = render 'order_summary', finish: true
+  .text-center
+    = link_to t('back_to_store'), catalog_index_path, class: 'btn btn-default mb-20'

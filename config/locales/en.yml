@@ -30,6 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  bookstore: "Bookstore"
+  shop: "Shop"
   home: "Home"
   buy_now_button: "Buy now"
   previous_button: "Previous"
@@ -75,4 +77,38 @@ en:
   update_cart: "Update cart"
   wrong_coupon: "The coupon you've entered is wrong"
   used_coupon: "The coupon you've entered is used"
-
+  checkout: "Checkout"
+  addresses: "Address"
+  shipping: "Delivery"
+  payment: "Payment"
+  confirm: "Confirm"
+  complete: "Complete"
+  save_and_continue: "Save and Continue"
+  shipping_amount: "Shipping:"
+  shipping_method: "Shipping Method"
+  method: "Method"
+  days: "Days"
+  price: "Price"
+  delivery:
+    method:
+      teleport: "Teleport"
+      by_car: "By car"
+      by_train: "By train"
+    days:
+      from_3_to_7: "From 3 to 7 days"
+      from_2_to_5: "From 2 to 5 days"
+      from_0_to_1: "Less then 24 hours"
+  cvv_help: "3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front"
+  phone: "Phone"
+  shipments: "Shipments"
+  edit: "edit"
+  payment_information: "Payment Information"
+  book: "Book"
+  total: "Total"
+  place_order: "Place Order"
+  back_to_store: "Back to Store"
+  login: "Log In"
+  or: "or"
+  thanks_for_order: "Thank You for your Order!"
+  confirmation_email: "An order confirmation has been sent to %{email}"
+  oder_code: "Order %{code}"

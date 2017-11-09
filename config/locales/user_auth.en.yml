@@ -1,0 +1,22 @@
+en:
+  login: "Log In"
+  or: "or"
+  have_not_account: "Don’t have an Account?"
+  have_account: 'Have an Account?'
+  forgot_password: 'Forgot password?'
+  log_out: 'Log out'
+  signup: 'Sign Up'
+  pass_forgot: 'Forgot your password?'
+  pass_forgot_email: "We'll email you instructions on how to reset it"
+  enter_email_placeholder: "Enter your email"
+  email_instructions: "Email Instructions"
+  cancel: "Cancel"
+  enter_email: 'Enter Email'
+
+  checkout_login:
+    login: "Log In with Password"
+    already_customer: "Returning Customer"
+    new_customer: "New Customer"
+    quick_register: "Quick Register"
+    later_password: "You'll be able to create password later"
+    continue: "Continue to Checkout"

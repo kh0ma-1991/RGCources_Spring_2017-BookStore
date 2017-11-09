@@ -1,0 +1,33 @@
+%main.container.general-main-wrap
+  .row
+    .col-md-6.mb-20
+      .text-center
+        %h3.general-subtitle= t('checkout_login.already_customer')
+        = link_to user_facebook_omniauth_authorize_path, class: 'general-login-icon' do
+          %i.fa.fa-facebook-official
+        %p.general-login-text= t('or')
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'general-form' }) do |f|
+        .form-group
+          = f.label nil, t('checkout_login.login'),class: 'control-label'
+        .form-group.mb-30
+          = f.label :email, t('enter_email'),class: 'control-label input-label'
+          = f.text_field :email, class: 'form-control', placeholder: t('enter_email')
+        .form-group.mb-30
+          = f.label :password, class: 'control-label input-label'
+          = f.password_field :password, class: 'form-control', placeholder: true
+          = link_to t('forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
+        = f.submit t('checkout_login.login'), class: 'btn btn-default mb-20'
+    .col-md-6.mb-20
+      .text-center
+        %h3.general-subtitle= t('checkout_login.new_customer')
+        = link_to user_facebook_omniauth_authorize_path, class: 'general-login-icon' do
+          %i.fa.fa-facebook-official
+        %p.general-login-text= t('or')
+      = form_for(resource, as: resource_name, url: wizard_path, method: :put, html: { class: 'general-form' }) do |f|
+        .form-group
+          = f.label nil, t('checkout_login.quick_register'),class: 'control-label'
+          %p.general-info-text= t('checkout_login.later_password')
+        .form-group.mb-30
+          = f.label :email, t('enter_email'),class: 'control-label input-label'
+          = f.text_field :email, class: 'form-control', placeholder: t('enter_email')
+        = f.submit t('checkout_login.continue'), class: 'btn btn-default mb-20'

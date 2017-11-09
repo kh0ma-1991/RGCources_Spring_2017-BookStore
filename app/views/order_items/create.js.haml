@@ -1,5 +1,5 @@
 - if @order_item
-  if ($('.shop-quantity').length == 0) $('.shop-icon').html('<span class="shop-quantity"></span>');
+  if ($('.shop-quantity').length == 0) $('.shop-icon').html('<span class="shop-quantity"></span>').parent().removeClass('disabled');
   $('.shop-quantity').html("#{@order.quantity}");
   $('#book-quantity').html("#{@order_item.book.quantity}");
   $('#available-quantity').val("#{@order_item.book.quantity}");

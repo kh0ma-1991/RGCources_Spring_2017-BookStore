@@ -3,6 +3,8 @@ $("#order_item_row_#{params[:id]}").remove();
 $("#xs_order_item_row_#{params[:id]}").remove();
 - if (@order.quantity <= 0)
   $('.shop-quantity').remove();
+  $('main').html('<h1>The cart is empty</h1>');
+  $('a.shop-link').attr('href','/');
 - else
   $('.shop-quantity').html("#{@order.quantity}");
 $('#subtotal').html("#{price_in_currency @order.subtotal}");
