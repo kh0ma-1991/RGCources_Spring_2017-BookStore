@@ -1,10 +1,10 @@
-= render 'address_form_field', f: f, errors: errors, field: :first_name
-= render 'address_form_field', f: f, errors: errors, field: :last_name
-= render 'address_form_field', f: f, errors: errors, field: :address
-= render 'address_form_field', f: f, errors: errors, field: :city
-= render 'address_form_field', f: f, errors: errors, field: :zip
+= render 'checkout/address_form_field', f: f, errors: errors, field: :first_name
+= render 'checkout/address_form_field', f: f, errors: errors, field: :last_name
+= render 'checkout/address_form_field', f: f, errors: errors, field: :address
+= render 'checkout/address_form_field', f: f, errors: errors, field: :city
+= render 'checkout/address_form_field', f: f, errors: errors, field: :zip
 .form-group{class: field_has_error_class(errors, :country)}
   = f.label :country, class: 'control-label input-label'
   = f.country_select :country, { priority_countries: ["UA", "BY", "RU"], include_blank: t('select_a_country') }, class: 'form-control'
   = content_tag(:span, errors[:country].join(', <br>').html_safe,  class: 'help-block') if field_has_error?(errors, :country)
-= render 'address_form_field', f: f, errors: errors, field: :phone, placeholder: t('phone_placeholder')
+= render 'checkout/address_form_field', f: f, errors: errors, field: :phone, placeholder: t('phone_placeholder')

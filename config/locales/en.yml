@@ -33,6 +33,8 @@ en:
   bookstore: "Bookstore"
   shop: "Shop"
   home: "Home"
+  settings: 'Settings'
+  orders: 'Orders'
   buy_now_button: "Buy now"
   previous_button: "Previous"
   next_button: "Next"
@@ -112,3 +114,6 @@ en:
   thanks_for_order: "Thank You for your Order!"
   confirmation_email: "An order confirmation has been sent to %{email}"
   oder_code: "Order %{code}"
+  save: 'Save'
+  address: 'Address'
+  privacy: 'Privacy'

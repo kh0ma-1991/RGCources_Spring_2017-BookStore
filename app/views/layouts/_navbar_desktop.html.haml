@@ -13,9 +13,9 @@
         %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} My account
         %ul.dropdown-menu
           %li
-            %a{href: "#"} Orders
+            =link_to t('orders'), root_path
           %li
-            %a{href: "#"} Settings
+            =link_to t('settings'), address_index_path
           %li.divider{role: "separator"}
           %li
             = link_to t('log_out'), destroy_user_session_path, method: :delete

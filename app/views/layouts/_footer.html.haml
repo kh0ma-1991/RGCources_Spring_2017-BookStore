@@ -9,9 +9,9 @@
             =link_to t('shop'), catalog_index_path, class: 'nav-link'
           - if user_signed_in?
             %li
-              %a.nav-link{href: "#"} Orders
+              =link_to t('orders'), root_path, class: 'nav-link'
             %li
-              %a.nav-link{href: "#"} Settings
+              =link_to t('settings'), address_index_path, class: 'nav-link'
       .col-sm-3
         %p.general-nav-mail support@bookstore.com
         %p.general-nav-number (555)-555-5555

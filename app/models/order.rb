@@ -1,11 +1,11 @@
 class Order < ApplicationRecord
   include AASM
 
-  has_many :order_items
-  has_one :coupon
-  has_one :shipping_address
-  has_one :billing_address
-  has_one :credit_card
+  has_many :order_items, dependent: :destroy
+  has_one :coupon, dependent: :destroy
+  has_one :shipping_address, dependent: :destroy
+  has_one :billing_address, dependent: :destroy
+  has_one :credit_card, dependent: :destroy
   belongs_to :delivery, optional: true
   belongs_to :user, optional: true
   before_save :set_quantity, :calculate

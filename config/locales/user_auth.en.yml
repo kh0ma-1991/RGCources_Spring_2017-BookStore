@@ -1,4 +1,5 @@
 en:
+  email: 'Email'
   login: "Log In"
   or: "or"
   have_not_account: "Don’t have an Account?"
@@ -16,6 +17,14 @@ en:
   change: "Change"
   type_new_password: 'Type a new Password'
   confirm_new_password: 'Confirm Password'
+  please_remove_account: 'Please Remove My Account'
+  remove_account: 'Remove Account'
+  understand_lost_data: 'I understand that all data will be lost'
+  old_password: 'Old Password'
+  new_password: 'New Password'
+  email_was_changed: 'Email was changed successfully'
+  password_was_changed: 'Password was changed successfully'
+  bad_current_password: 'Bad Old Password'
 
   checkout_login:
     login: "Log In with Password"

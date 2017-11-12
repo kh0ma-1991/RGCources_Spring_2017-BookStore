@@ -1,0 +1,31 @@
+%main.container
+  %h1.general-title-margin= t('settings')
+  %ul.nav.clearfix.mb-20
+    %li.tab-item.active
+      = link_to t('address'), address_index_path, class: 'tab-link'
+    %li.tab-item
+      = link_to t('privacy'), privacy_index_path, class: 'tab-link'
+  .res-mb-100
+    .hidden-xs.hidden-sm
+      .row
+        .col-md-5
+          %h3.general-subtitle= t('billing_address')
+        .col-md-5.col-md-offset-1
+          %h3.general-subtitle= t('shipping_address')
+    .row
+      .col-md-5.mb-40
+        .visible-xs.visible-sm
+          %h3.general-subtitle= t('billing_address')
+        = form_for @billing, url: update_billing_address_path(current_user), method: :patch do |f|
+          - errors = @billing.errors
+          = render 'checkout/address_form', errors: errors, f: f
+          .text-center.general-text-align
+            = f.submit t('save'), class: 'btn btn-default mb-20'
+      .col-md-5.col-md-offset-1.mb-60
+        .visible-xs.visible-sm
+          %h3.general-subtitle= t('shipping_address')
+        = form_for @shipping, url: update_shipping_address_path(current_user), method: :patch do |f|
+          - errors = @shipping.errors
+          = render 'checkout/address_form', errors: errors, f: f
+          .text-center.general-text-align
+            = f.submit t('save'), class: 'btn btn-default mb-20'

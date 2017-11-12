@@ -1,0 +1,41 @@
+%main.container
+  %h1.general-title-margin= t('settings')
+  %ul.nav.clearfix.mb-20
+    %li.tab-item
+      = link_to t('address'), address_index_path, class: 'tab-link'
+    %li.tab-item.active
+      = link_to t('privacy'), privacy_index_path, class: 'tab-link'
+  .row.mb-60
+    .col-sm-5
+      %p.in-gold-500.font-18.mb-25= t('email')
+      = form_for(current_user, as: :user, url: update_email_privacy_path(current_user), html: { method: :patch, class: 'general-form-md' }) do |f|
+        - errors = current_user.errors
+        .form-group.mb-35{class: field_has_error_class(errors, :email)}
+          = f.label :email, t('enter_email'),class: 'control-label input-label'
+          = f.text_field :email, class: 'form-control', placeholder: t('enter_email_placeholder')
+        .general-text-align
+          = f.submit t('save'), class: 'btn btn-default mb-35'
+    .col-sm-5.col-sm-offset-1
+      %p.in-gold-500.font-18.mb-25 Password
+      = form_for(current_user, as: :user, url: update_password_privacy_path(current_user), html: { method: :patch, class: 'general-form-md divider-lg-bottom pb-25' }) do |f|
+        .form-group.mb-30
+          = f.label :current_password, t('old_password'), class: 'control-label input-label'
+          = f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: t('old_password')
+        .form-group.mb-30
+          = f.label :password, t('new_password'), class: 'control-label input-label'
+          = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: t('new_password')
+        .form-group.mb-40
+          = f.label :password_confirmation, t('confirm_new_password'), class: 'control-label input-label'
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: t('confirm_new_password')
+        .general-text-align
+          = f.submit t('save'), class: 'btn btn-default mb-10'
+    .col-sm-12
+      %p.in-gold-500.font-18.mb-25= t('remove_account')
+      .general-settings-btn
+        = link_to t('please_remove_account'), user_registration_path, method: :delete, class: 'btn disabled mb-20', id: 'please_remove_account'
+      .form-group.checkbox.general-settings-checkbox
+        %label.checkbox-label
+          %input.checkbox-input#understand_delete_account{type: "checkbox", hidden: "true"}
+          %span.checkbox-icon
+            %i.fa.fa-check
+          %span.checkbox-text= t('understand_lost_data')

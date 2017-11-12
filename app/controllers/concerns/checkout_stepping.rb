@@ -17,7 +17,8 @@ module CheckoutStepping
 
     def show_addresses
       return redirect_to :root if @order.quantity <= 0
-      @shipping = @order.shipping_address || ShippingAddress.new
+      shipping_address = @order.shipping_address || current_user.shipping_address
+      @shipping = shipping_address || ShippingAddress.new
       billing_address = @order.billing_address || current_user.billing_address
       @billing  = billing_address || BillingAddress .new
       render_wizard
