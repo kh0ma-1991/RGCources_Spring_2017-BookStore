@@ -15,6 +15,7 @@ class Order < ApplicationRecord
     state :in_queue, after_enter: :send_email
     state :delivering
     state :done
+    state :canceled
 
     event :checkout do
       transitions from: :in_progress, to: :in_queue
@@ -27,6 +28,16 @@ class Order < ApplicationRecord
     event :complete do
       transitions from: :delivering, to: :done
     end
+
+    event :cancel do
+      transitions from: [:in_queue, :delivering], to: :canceled
+    end
+  end
+
+  def code
+    id = self.id.to_s
+    return '#R'+id if id.length >= 9
+    '#R00000000'.slice(0,10-id.length)+id
   end
 
   private

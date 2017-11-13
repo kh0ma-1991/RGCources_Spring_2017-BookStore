@@ -6,7 +6,7 @@
   .row.mb-20
     .col-sm-6
       .visible-xs
-        %p.general-order-number.mb-0= t('oder_code', code: (order_code @order))
+        %p.general-order-number.mb-0= t('oder_code', code: (@order.code))
         %p.general-address.mb-30= @order.updated_at.to_formatted_s(:long)
       - address = @order.shipping_address
       %p.general-address
