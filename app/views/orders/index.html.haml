@@ -17,7 +17,8 @@
             %td.col-half
               %span.in-grey-600= t('number')
             %td.col-half
-              %span.general-order-number= order.code
+              = link_to order do
+                %span.general-order-number= order.code
           %tr
             %td
               %span.in-grey-600= t('completed_at')
@@ -49,7 +50,8 @@
         - ordered_orders.each do | order |
           %tr
             %td
-              %span.general-order-number= order.code
+              = link_to order do
+                %span.general-order-number= order.code
             %td
               %span.in-grey-900.font-16.fw-300= order.updated_at.to_formatted_s(:db)
             %td

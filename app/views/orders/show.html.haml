@@ -1,0 +1,20 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= t('oder_code', code: @order_show.code)
+  .row.mb-20
+    = render 'checkout/confirm_address', address: @order_show.shipping_address, editable: false
+    = render 'checkout/confirm_address', address: @order_show.billing_address, editable: false
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('shipments')
+      %p.general-address
+        = t("delivery.method.#{@order_show.delivery.method}")
+        %br
+        = "#{t('price')} #{price_in_currency @order_show.delivery.price}"
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('payment_information')
+      %p.general-address
+        = @order_show.credit_card.number.gsub(/\d{4}\s/, '**** ')
+        %br
+        = @order_show.credit_card.expiration_date
+  = render 'checkout/books', order: @order_show
+  .text-center.general-text-right
+    = render 'checkout/order_summary', order: @order_show, finish: true

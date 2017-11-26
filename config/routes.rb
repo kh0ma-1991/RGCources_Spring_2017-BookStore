@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get '/users/edit', to: 'privacy#index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}
   resources :checkout
-  resources :orders, only: [:index, :update]
+  resources :orders, only: [:index, :update, :show]
   resources :order_items, only: [:create, :update, :destroy]
   resources :catalog, only: :index
   resources :cart, only: :index

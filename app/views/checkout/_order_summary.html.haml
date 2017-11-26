@@ -5,19 +5,19 @@
     %td
       %p.font-16= t('subtotal')
     %td
-      %p.font-16= price_in_currency @order.subtotal
+      %p.font-16= price_in_currency order.subtotal
   %tr
     %td
       %p.font-16= t('coupon')
     %td
-      %p.font-16= price_in_currency discount
+      %p.font-16= price_in_currency discount order
   %tr
     %td
       %p.font-16= t('shipping_amount')
     %td
-      %p.font-16= price_in_currency shipping_price
+      %p.font-16= price_in_currency shipping_price order
   %tr
     %td
       %p.font-16{class: ('thick' if finish) }= t('order_total')
     %td
-      %p.font-16{class: ('thick' if finish) }= price_in_currency @order.total_price
+      %p.font-16{class: ('thick' if finish) }= price_in_currency order.total_price

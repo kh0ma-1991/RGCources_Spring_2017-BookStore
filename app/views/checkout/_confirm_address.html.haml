@@ -1,8 +1,10 @@
+- editable ||= false
 .col-sm-3
-  %h3.general-subtitle= t(address.type.underscore)
+  %h3.general-subtitle{class: "#{'mt-0' unless editable}"}= t(address.type.underscore)
   %p.general-address
     = address.full_name
-    = link_to t('edit'), wizard_path(:addresses), class: 'general-edit'
+    - if editable
+      = link_to t('edit'), wizard_path(:addresses), class: 'general-edit'
     %br
     = address.address
     %br

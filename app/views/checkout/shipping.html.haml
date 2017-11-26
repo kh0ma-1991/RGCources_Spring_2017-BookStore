@@ -49,5 +49,5 @@
               %td
                 %span.font-16.in-gold-500= price_in_currency delivery.price
     .general-text-align
-      = render 'order_summary'
+      = render 'order_summary', order: @order
       = button_to t('save_and_continue'), nil, class: 'btn btn-default center-block mb-20'

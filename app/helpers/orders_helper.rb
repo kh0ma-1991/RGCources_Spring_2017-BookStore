@@ -5,7 +5,9 @@ module OrdersHelper
   end
 
   def orders_filters
-    Order.aasm(:status).states.map(&:name).unshift(:all)
+    filters = Order.aasm(:status).states.map(&:name).unshift(:all)
+    filters.delete(:in_progress)
+    filters
   end
 
   def orders_current_filter
@@ -16,6 +18,6 @@ module OrdersHelper
   end
 
   def ordered_orders
-    Order.send(orders_current_filter).order(updated_at: :asc)
+    @orders.send(orders_current_filter).order(updated_at: :asc)
   end
 end
