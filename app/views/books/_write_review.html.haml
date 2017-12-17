@@ -1,0 +1,19 @@
+.mt-30
+  %h3= t('write_review')
+  = form_for book.reviews.build do |f|
+    = f.hidden_field :book_id
+    .form-group
+      = f.label :rating_score, t('score'), class: 'control-label input-label'
+      %fieldset.rating#rating_score
+        - 5.times do |rate|
+          = f.radio_button :rating, "#{rate + 1}", checked: rate == 0, hidden: true
+          = f.label "rating_#{rate+1}", id: "review_star_#{rate+1}" do
+            %i.fa.fa-star.rate-star{class: "#{'rate-empty' unless rate == 0}"}
+    .form-group
+      = f.label :title, class: 'control-label input-label'
+      = f.text_field :title, class: 'form-control max-750'
+    .form-group
+      = f.label :text, class: 'control-label input-label'
+      = f.text_area :text, class: 'form-control max-750', rows: '8'
+    .text-left
+      = f.submit t('post_review'), class: 'btn btn-default mb-55'

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :update, :destroy]
   resources :catalog, only: :index
   resources :cart, only: :index
+  resources :reviews, only: :create
   scope :settings, only: :index do
     resources :privacy, only: :index do
       member do

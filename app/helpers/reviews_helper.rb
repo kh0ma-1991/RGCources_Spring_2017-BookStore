@@ -14,6 +14,7 @@ module ReviewsHelper
   end
 
   def reviewer_image user
+    return '/images/no_avatar.jpg' unless user
     return '/images/no_avatar.jpg' unless user.image
     user.image
   end

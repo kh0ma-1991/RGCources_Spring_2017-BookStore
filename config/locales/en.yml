@@ -132,3 +132,6 @@ en:
   rewievs: "Reviews (%{amount})"
   verified_reviewer: 'Verified Reviewer'
   unknown_user: 'Unknown user'
+  write_review: 'Write Review'
+  post_review: 'Post'
+  score: 'Score'

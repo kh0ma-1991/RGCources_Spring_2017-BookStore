@@ -1,5 +1,5 @@
 - if book.reviews.length > 0
-  .mb-80
+  .mt-30
     %h3.in-gold-500.mb-25= t('rewievs', amount: book.reviews.count{ | review | review.approved || review.user == current_user})
     - book.reviews.each do | review |
       - if review.approved || review.user == current_user
@@ -18,4 +18,5 @@
                   %i.fa.fa-star.rate-star
                 - (5 - review.rating).times do
                   %i.fa.fa-star.rate-star.rate-empty
+              %h4= review.title
               %p= review.text
