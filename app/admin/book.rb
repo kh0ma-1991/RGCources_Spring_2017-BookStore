@@ -1,4 +1,5 @@
 ActiveAdmin.register Book do
+  decorate_with BookDecorator
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -58,10 +59,22 @@ ActiveAdmin.register Book do
 
   index do
     selectable_column
-    columns_to_exclude = %w(description cover materials dimensions)
-    (Book.column_names - columns_to_exclude).each do |c|
-      column c.to_sym
+    column :id
+    column :cover do |book|
+      image_tag book.cover, class: 'book-cover'
     end
+    column :category_id do | book |
+      book.category.name
+    end
+    column :title
+    column :authors do | book |
+      book.authors_decorated
+    end
+    column :description do | book |
+      book.short_description
+    end
+    column :price
+    column :quantity
     actions
   end
 end

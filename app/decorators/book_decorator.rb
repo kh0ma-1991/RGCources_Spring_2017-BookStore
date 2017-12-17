@@ -8,4 +8,8 @@ class BookDecorator < Draper::Decorator
   def dimensions_decorated
     "H: #{dimensions['H']}” x W: #{dimensions['W']}” x D: #{dimensions['D']}”"
   end
+
+  def short_description
+    description.truncate(150)
+  end
 end
