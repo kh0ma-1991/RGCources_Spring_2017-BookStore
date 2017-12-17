@@ -1,0 +1,21 @@
+- if book.reviews.length > 0
+  .mb-80
+    %h3.in-gold-500.mb-25= t('rewievs', amount: book.reviews.count{ | review | review.approved || review.user == current_user})
+    - book.reviews.each do | review |
+      - if review.approved || review.user == current_user
+        - review_user = review.user
+        .general-message-wrap.divider-lg
+          .clearfix
+            = image_tag reviewer_image(review_user), class: 'img img-circle logo-size inline-block pull-left'
+            .ml-70
+              %div
+                .general-message-date.hidden-xs= review.created_at.strftime "%d/%m/%Y"
+                .max-240
+                  .general-message-verified= t('verified_reviewer') if verified_user? review_user
+                  .general-message-name= reviewer_name review_user
+              .mb-15
+                - review.rating.times do
+                  %i.fa.fa-star.rate-star
+                - (5 - review.rating).times do
+                  %i.fa.fa-star.rate-star.rate-empty
+              %p= review.text

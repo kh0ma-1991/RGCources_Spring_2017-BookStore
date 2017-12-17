@@ -1,7 +1,8 @@
 class Book < ApplicationRecord
   paginates_per 8
   mount_uploader :cover, CoverUploader
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   belongs_to :category
   validate :validate_pictures_count, on: [:create, :update]
   validate :validate_dimensions, on: [:create, :update]

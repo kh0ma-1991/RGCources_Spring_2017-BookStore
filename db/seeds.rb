@@ -47,3 +47,14 @@ rand(100..150).times do
 end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+user1 = User.create!(email: 'user1@example.com', password: '12345678', password_confirmation: '12345678', name: 'User1 User1', image: 'https://scontent.fdnk2-1.fna.fbcdn.net/v/t1.0-1/p50x50/22815267_103654853738289_3579569356828876755_n.jpg?oh=2aaeaac2b244009fed55235e98998e2c&oe=5ACC66F4')
+user2 = User.create!(email: 'user2@example.com', password: '12345678', password_confirmation: '12345678', name: 'User2 User2', image: 'https://scontent.fdnk2-1.fna.fbcdn.net/v/t1.0-1/p50x50/22728837_449949465406002_2239540441192598721_n.jpg?oh=a3136575b40406853941835482c63fac&oe=5ABE3609')
+user3 = User.create!(email: 'user3@example.com', password: '12345678', password_confirmation: '12345678')
+
+Book.all.each do | book |
+  Review.create(approved: true, book: book, user: user1, text: "#{book.title} is awesome", rating: 5, title: 'Super book')
+  Review.create(approved: true, book: book, user: user2, text: "#{book.title} is so-so", rating: 3, title: 'No so good book')
+  Review.create(approved: true, book: book, user: user3, text: "#{book.title} is good enough", rating: 4, title: 'Normal book')
+  Review.create(approved: false, book: book, user: user3, text: "#{book.title} is awesome", rating: 1, title: 'Worst book ever')
+end

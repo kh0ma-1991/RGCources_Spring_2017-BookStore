@@ -129,3 +129,6 @@ en:
   completed_at: 'Completed at'
   status: 'Status'
   total: 'Total'
+  rewievs: "Reviews (%{amount})"
+  verified_reviewer: 'Verified Reviewer'
+  unknown_user: 'Unknown user'
